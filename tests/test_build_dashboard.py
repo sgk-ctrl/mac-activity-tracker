@@ -70,6 +70,23 @@ def test_script_injection_is_neutralized(tmp_path):
     assert parsed["sessions"][0]["name"] == payload
 
 
+def test_chart_src_is_attribute_escaped(tmp_path):
+    # a hostile --chart-src must not break out of the src="..." attribute
+    data = {
+        "source": "sample",
+        "window_start": "2026-01-01",
+        "window_end": "2026-01-14",
+        "generated_at": "2026-01-14T10:00:00",
+        "sessions": [],
+    }
+    out = tmp_path / "dash.html"
+    hostile = 'x"></script><script>alert(1)</script>'
+    build_dashboard.build(_write(tmp_path, data), str(out), hostile)
+    html = out.read_text()
+    assert "<script>alert(1)</script>" not in html
+    assert "&lt;script&gt;" in html or "&quot;" in html
+
+
 def test_data_token_collision(tmp_path):
     # user data literally containing __DATA__ must not corrupt the template
     data = {

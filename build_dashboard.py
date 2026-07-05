@@ -10,6 +10,7 @@ keeping the dashboard fully offline.
 import argparse
 import json
 import os
+from html import escape as html_escape  # local var 'html' holds the template
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "templates", "dashboard.html.tmpl")
@@ -35,7 +36,9 @@ def build(data_path: str, out_path: str, chart_src: str) -> str:
         html = f.read()
 
     data_json = escape_for_script(json.dumps(data, separators=(",", ":")))
-    html = html.replace("__CHART_SRC__", chart_src, 1)
+    # attribute-escape chart_src: it lands inside src="..." and must not be
+    # able to break out of the attribute even with a hostile CLI value
+    html = html.replace("__CHART_SRC__", html_escape(chart_src), 1)
     html = html.replace("__DATA__", data_json, 1)
 
     with open(out_path, "w") as f:

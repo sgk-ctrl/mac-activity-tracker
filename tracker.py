@@ -70,14 +70,16 @@ def read_only_db(path):
     # yield a second time and crash the context manager).
     conn = None
     for uri in (f"file:{path}?immutable=1", f"file:{path}?mode=ro&nolock=1"):
+        candidate = None
         try:
             candidate = sqlite3.connect(uri, uri=True, timeout=2)
             candidate.execute("SELECT 1")
             conn = candidate
             break
         except sqlite3.Error:
-            with contextlib.suppress(Exception):
-                candidate.close()
+            if candidate is not None:
+                with contextlib.suppress(Exception):
+                    candidate.close()
     if conn is not None:
         try:
             yield conn
