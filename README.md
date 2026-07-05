@@ -13,6 +13,23 @@ It answers: *Where does my Mac time actually go? How much of it is deep focus vs
 
 ![Dashboard built from the synthetic sample data](assets/dashboard.png)
 
+## What it tells you (and what to do with it)
+
+Every run answers five questions, each tied to an action:
+
+| The dashboard shows | The question it answers | What you can do about it |
+|---|---|---|
+| **Deep-focus %** (Coding + AI time) | Am I spending my best hours on real work? | Protect your peak hour (shown in the assessment) from meetings. |
+| **Agentic-tool share** and per-tool split | How much am I actually leveraging AI tools — and which ones? | Consolidate on the tools that carry weight; chain them instead of copy-pasting between them. |
+| **App switches / day** | How fragmented is my attention? | Batch comms into 2–3 fixed windows; the number drops within one cycle. |
+| **Distraction time** + top offender | Where do the leaks cluster? | One targeted Screen Time limit beats a blanket blocker. |
+| **Active hours by hour-of-day** | When am I genuinely on? | Schedule deep work inside that window, admin outside it. |
+
+The **biweekly assessment** turns these into 3–4 concrete recommendations. The
+loop that makes it useful: run it → pick **one** recommendation → change one
+habit → re-run in two weeks → compare. The tool's job is done when a number you
+targeted moves in the direction you wanted.
+
 ## Who this is for
 
 - **Privacy-conscious knowledge workers** (developers, researchers, writers) who want quantified-self insight but won't send their browsing/app history to a cloud service.
@@ -60,7 +77,7 @@ macOS 12+ and Python 3.9+ (both preinstalled on modern Macs). No pip packages re
 ## Quickstart
 
 ```bash
-git clone https://github.com/<you>/mac-activity-tracker.git
+git clone https://github.com/sgk-ctrl/mac-activity-tracker.git
 cd mac-activity-tracker
 
 # 1) See the sample dashboard (no setup, no real data)
