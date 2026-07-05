@@ -18,6 +18,7 @@ Privacy defaults (see --help):
 Requires macOS and, for the Screen Time / browser DBs, Full Disk Access for your
 terminal (System Settings > Privacy & Security > Full Disk Access).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -41,13 +42,13 @@ from categories import (
 )
 
 HOME = os.path.expanduser("~")
-MAC_EPOCH = dt.datetime(2001, 1, 1)      # CFAbsoluteTime reference (local, naive)
-CHROME_EPOCH = dt.datetime(1601, 1, 1)   # WebKit/Chrome reference
+MAC_EPOCH = dt.datetime(2001, 1, 1)  # CFAbsoluteTime reference (local, naive)
+CHROME_EPOCH = dt.datetime(1601, 1, 1)  # WebKit/Chrome reference
 
 # per-row / per-visit sanity caps (minutes). Durations are ESTIMATES.
-APP_ROW_CAP_MIN = 240      # clamp absurdly long single app-usage rows
-WEB_DWELL_CAP_MIN = 5      # a single web visit is credited at most this
-WEB_IDLE_GAP_MIN = 15      # a gap larger than this = user was away; credit a floor
+APP_ROW_CAP_MIN = 240  # clamp absurdly long single app-usage rows
+WEB_DWELL_CAP_MIN = 5  # a single web visit is credited at most this
+WEB_IDLE_GAP_MIN = 15  # a gap larger than this = user was away; credit a floor
 WEB_FLOOR_MIN = 1
 
 
@@ -127,20 +128,28 @@ def collect_app_usage(since, warnings):
         minutes = round((end - start).total_seconds() / 60, 1)
         if minutes < 0.5:
             continue
-        minutes = min(minutes, APP_ROW_CAP_MIN)   # clamp outliers (estimate)
+        minutes = min(minutes, APP_ROW_CAP_MIN)  # clamp outliers (estimate)
         name, cat = APP_CATEGORY.get(bundle, (None, "Other"))
         agentic = any(a in (bundle or "").lower() for a in AGENTIC_APP_FRAGMENTS)
         if name is None:
             name = (bundle or "unknown").split(".")[-1]
         if agentic and cat == "Other":
             cat = "AI / Agentic"
-        out.append({"start": start.isoformat(timespec="minutes"), "name": name,
-                    "kind": "app", "category": cat, "is_agentic": agentic,
-                    "minutes": minutes})
+        out.append(
+            {
+                "start": start.isoformat(timespec="minutes"),
+                "name": name,
+                "kind": "app",
+                "category": cat,
+                "is_agentic": agentic,
+                "minutes": minutes,
+            }
+        )
     print(f"  app usage rows: {len(out)}")
     if not out:
-        warnings.append("Screen Time returned no app usage (may be disabled, or only "
-                        "recent days are retained).")
+        warnings.append(
+            "Screen Time returned no app usage (may be disabled, or only recent days are retained)."
+        )
     return out
 
 
@@ -158,10 +167,16 @@ def _visits_from_rows(rows, warnings, label):
             mins = WEB_FLOOR_MIN
         else:
             mins = round(min(gap, WEB_DWELL_CAP_MIN), 1)
-        out.append({"start": t.isoformat(timespec="minutes"), "name": host,
-                    "kind": "web", "category": cat_for_domain(host),
-                    "is_agentic": bool(re.search(AGENTIC_DOMAINS, host)),
-                    "minutes": mins})
+        out.append(
+            {
+                "start": t.isoformat(timespec="minutes"),
+                "name": host,
+                "kind": "web",
+                "category": cat_for_domain(host),
+                "is_agentic": bool(re.search(AGENTIC_DOMAINS, host)),
+                "minutes": mins,
+            }
+        )
     return out
 
 
@@ -178,7 +193,8 @@ def collect_chrome_like(path, since, label, warnings):
         with read_only_db(path) as conn:
             raw = conn.execute(
                 "SELECT url, visit_time FROM visits "
-                "JOIN urls ON urls.id = visits.url ORDER BY visit_time").fetchall()
+                "JOIN urls ON urls.id = visits.url ORDER BY visit_time"
+            ).fetchall()
     except sqlite3.Error as e:
         warnings.append(f"{label}: {e}")
         return []
@@ -200,7 +216,8 @@ def collect_safari(since, warnings):
             raw = conn.execute(
                 "SELECT hi.domain_expansion, hi.url, hv.visit_time "
                 "FROM history_visits hv JOIN history_items hi ON hi.id = hv.history_item "
-                "ORDER BY hv.visit_time").fetchall()
+                "ORDER BY hv.visit_time"
+            ).fetchall()
     except sqlite3.Error as e:
         warnings.append(f"Safari: {e}")
         return []
@@ -222,8 +239,9 @@ def collect_browsers(since, warnings):
     out += collect_safari(since, warnings)
     print(f"  browser visits: {len(out)}")
     if not out:
-        warnings.append("No browser history read (grant Full Disk Access, or no supported "
-                        "browser installed).")
+        warnings.append(
+            "No browser history read (grant Full Disk Access, or no supported browser installed)."
+        )
     return out
 
 
@@ -253,7 +271,7 @@ def collect_cli(since, warnings):
         except OSError:
             continue
         for ln in lines:
-            m = re.match(r"^:\s*(\d+):\d+;(.*)$", ln)   # zsh EXTENDED_HISTORY
+            m = re.match(r"^:\s*(\d+):\d+;(.*)$", ln)  # zsh EXTENDED_HISTORY
             if m:
                 ts, cmd = int(m.group(1)), m.group(2)
                 t = dt.datetime.fromtimestamp(ts)
@@ -265,25 +283,33 @@ def collect_cli(since, warnings):
             if tool not in AGENTIC_CLI:
                 continue
             if t is None:
-                undated_skipped += 1        # do NOT fabricate a timestamp
+                undated_skipped += 1  # do NOT fabricate a timestamp
                 continue
             if t < since:
                 continue
-            out.append({"start": t.isoformat(timespec="minutes"),
-                        "name": f"{tool} (CLI)", "kind": "app",
-                        "category": "AI / Agentic", "is_agentic": True,
-                        "minutes": 5})       # nominal; real duration TBD
+            out.append(
+                {
+                    "start": t.isoformat(timespec="minutes"),
+                    "name": f"{tool} (CLI)",
+                    "kind": "app",
+                    "category": "AI / Agentic",
+                    "is_agentic": True,
+                    "minutes": 5,
+                }
+            )  # nominal; real duration TBD
     print(f"  agentic CLI invocations: {len(out)}")
     if undated_skipped:
-        warnings.append(f"Skipped {undated_skipped} un-timestamped shell entries "
-                        "(enable zsh EXTENDED_HISTORY / bash HISTTIMEFORMAT to include them).")
+        warnings.append(
+            f"Skipped {undated_skipped} un-timestamped shell entries "
+            "(enable zsh EXTENDED_HISTORY / bash HISTTIMEFORMAT to include them)."
+        )
     return out
 
 
 # ------------------------------------------------------------------------ main
 def redact(sessions):
     for s in sessions:
-        s["name"] = s["category"]      # drop identifying names
+        s["name"] = s["category"]  # drop identifying names
     return sessions
 
 
@@ -293,15 +319,19 @@ def main(argv=None):
     ap.add_argument("--out", default="my_activity_data.json", help="output JSON path")
     ap.add_argument("--no-browser", action="store_true", help="skip browser history")
     ap.add_argument("--no-shell", action="store_true", help="skip shell/CLI history")
-    ap.add_argument("--redact", action="store_true",
-                    help="store category + time only, drop all app/site names")
+    ap.add_argument(
+        "--redact", action="store_true", help="store category + time only, drop all app/site names"
+    )
     args = ap.parse_args(argv)
 
     if sys.platform != "darwin":
-        print("mac-activity-tracker only collects data on macOS. On this platform you "
-              "can still render the sample dashboard:\n"
-              "  python3 sample/build_sample_data.py && python3 build_dashboard.py "
-              "--data sample/sample_data.json", file=sys.stderr)
+        print(
+            "mac-activity-tracker only collects data on macOS. On this platform you "
+            "can still render the sample dashboard:\n"
+            "  python3 sample/build_sample_data.py && python3 build_dashboard.py "
+            "--data sample/sample_data.json",
+            file=sys.stderr,
+        )
         return 2
 
     now = dt.datetime.now()
@@ -324,7 +354,7 @@ def main(argv=None):
         "window_start": since.date().isoformat(),
         "window_end": now.date().isoformat(),
         "source": "live",
-        "estimates": True,   # durations are heuristic, not exact
+        "estimates": True,  # durations are heuristic, not exact
         "redacted": args.redact,
         "sessions": sessions,
     }
@@ -338,8 +368,10 @@ def main(argv=None):
         for w in warnings:
             print("  -", w)
     if not sessions:
-        print("\nNo data collected. Most likely fix: give your terminal Full Disk Access, "
-              "then re-run.\n  System Settings > Privacy & Security > Full Disk Access.")
+        print(
+            "\nNo data collected. Most likely fix: give your terminal Full Disk Access, "
+            "then re-run.\n  System Settings > Privacy & Security > Full Disk Access."
+        )
         return 1
     print(f"\nNext: python3 build_dashboard.py --data {args.out}")
     return 0

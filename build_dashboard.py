@@ -6,6 +6,7 @@ block and parsed with JSON.parse in the page, so hostnames/app names can never
 execute as script. Chart.js is referenced from a locally vendored copy (no CDN),
 keeping the dashboard fully offline.
 """
+
 import argparse
 import json
 import os
@@ -18,12 +19,13 @@ def escape_for_script(data_json: str) -> str:
     """Neutralize any sequence that could close the <script> tag or start
     markup, so embedded data stays inert regardless of its contents. Also
     escape the JS line/paragraph separators U+2028/U+2029 for safety."""
-    return (data_json
-            .replace("&", "\\u0026")
-            .replace("<", "\\u003c")
-            .replace(">", "\\u003e")
-            .replace(" ", "\\u2028")
-            .replace(" ", "\\u2029"))
+    return (
+        data_json.replace("&", "\\u0026")
+        .replace("<", "\\u003c")
+        .replace(">", "\\u003e")
+        .replace(" ", "\\u2028")
+        .replace(" ", "\\u2029")
+    )
 
 
 def build(data_path: str, out_path: str, chart_src: str) -> str:
@@ -45,15 +47,19 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Build the dashboard HTML from activity JSON.")
     ap.add_argument("--data", default="my_activity_data.json", help="input JSON path")
     ap.add_argument("--out", default="dashboard.html", help="output HTML path")
-    ap.add_argument("--chart-src", default="vendor/chart.umd.min.js",
-                    help="path/URL to Chart.js as seen from the output file "
-                         "(default: local vendored copy)")
+    ap.add_argument(
+        "--chart-src",
+        default="vendor/chart.umd.min.js",
+        help="path/URL to Chart.js as seen from the output file (default: local vendored copy)",
+    )
     args = ap.parse_args(argv)
 
     if not os.path.exists(args.data):
-        raise SystemExit(f"Data file not found: {args.data}\n"
-                         "Run 'python3 tracker.py' first, or pass "
-                         "--data sample/sample_data.json")
+        raise SystemExit(
+            f"Data file not found: {args.data}\n"
+            "Run 'python3 tracker.py' first, or pass "
+            "--data sample/sample_data.json"
+        )
 
     out = build(args.data, args.out, args.chart_src)
     print(f"Wrote {out} (data: {args.data}, chart: {args.chart_src})")

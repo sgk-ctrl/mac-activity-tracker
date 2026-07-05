@@ -1,4 +1,5 @@
 """Cross-platform unit tests (run on Linux CI via fixtures — no macOS needed)."""
+
 import datetime as dt
 import sqlite3
 import sys
@@ -40,11 +41,11 @@ def test_argv0_strips_prefixes():
 
 def test_agentic_cli_no_false_positives(tmp_path, monkeypatch):
     hist = (
-        ": 1719000000:0;claude write tests\n"          # real agentic (dated)
-        ": 1719000100:0;git commit -m \"fix cursor bug\"\n"   # must NOT match
-        ": 1719000200:0;python codextool.py\n"          # must NOT match
+        ": 1719000000:0;claude write tests\n"  # real agentic (dated)
+        ': 1719000100:0;git commit -m "fix cursor bug"\n'  # must NOT match
+        ": 1719000200:0;python codextool.py\n"  # must NOT match
         ": 1719000300:0;sudo apt install ollama-bin\n"  # must NOT match (argv0=apt)
-        ": 1719000400:0;cursor .\n"                     # real agentic
+        ": 1719000400:0;cursor .\n"  # real agentic
     )
     (tmp_path / ".zsh_history").write_text(hist)
     monkeypatch.setattr(tracker, "HOME", str(tmp_path))
@@ -67,8 +68,9 @@ def test_undated_bash_history_not_fabricated(tmp_path, monkeypatch):
 # --------------------------------------------------------------- knowledgeC
 def _make_knowledgec(path, rows):
     conn = sqlite3.connect(path)
-    conn.execute("CREATE TABLE ZOBJECT (ZSTREAMNAME TEXT, ZVALUESTRING TEXT, "
-                 "ZSTARTDATE REAL, ZENDDATE REAL)")
+    conn.execute(
+        "CREATE TABLE ZOBJECT (ZSTREAMNAME TEXT, ZVALUESTRING TEXT, ZSTARTDATE REAL, ZENDDATE REAL)"
+    )
     conn.executemany("INSERT INTO ZOBJECT VALUES (?,?,?,?)", rows)
     conn.commit()
     conn.close()
@@ -81,15 +83,15 @@ def test_collect_app_usage_fixture(tmp_path, monkeypatch):
     now_cf = (dt.datetime.now() - MAC_EPOCH).total_seconds()
     rows = [
         ("/app/usage", "com.microsoft.VSCode", now_cf - 3600, now_cf - 1800),  # 30 min
-        ("/app/usage", "com.google.Chrome", now_cf - 1800, now_cf - 1770),     # 0.5 min
-        ("/other/stream", "com.apple.Finder", now_cf - 100, now_cf - 10),      # ignored
-        ("/app/usage", "com.anthropic.claude", now_cf - 600, now_cf - 300),    # agentic
+        ("/app/usage", "com.google.Chrome", now_cf - 1800, now_cf - 1770),  # 0.5 min
+        ("/other/stream", "com.apple.Finder", now_cf - 100, now_cf - 10),  # ignored
+        ("/app/usage", "com.anthropic.claude", now_cf - 600, now_cf - 300),  # agentic
     ]
     _make_knowledgec(str(db), rows)
     monkeypatch.setattr(tracker, "HOME", str(tmp_path))
     out = tracker.collect_app_usage(dt.datetime.now() - dt.timedelta(days=1), [])
     names = {s["name"] for s in out}
-    assert "VS Code" in names          # display-name mapping applied
+    assert "VS Code" in names  # display-name mapping applied
     assert any(s["is_agentic"] for s in out if s["name"] == "Claude")
     assert all(s["category"] != "/other/stream" for s in out)
 
