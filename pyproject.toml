@@ -10,7 +10,7 @@ keywords = ["macos", "productivity", "screen-time", "privacy", "local-first", "q
 dependencies = []   # runtime is stdlib-only, on purpose
 
 [project.optional-dependencies]
-dev = ["pytest>=7", "ruff>=0.5"]
+dev = ["pytest>=7", "ruff>=0.15,<0.16"]
 
 [tool.ruff]
 line-length = 100

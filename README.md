@@ -121,8 +121,13 @@ several charts, and a rule-based biweekly assessment with tool/workflow suggesti
 ## A note on accuracy
 
 Durations are **estimates**. App usage comes from Screen Time (which may only
-retain recent days and can be disabled). Web "time" is a visit-count × capped-dwell
-proxy, not a true focus signal. Treat the numbers as **directional trends**, not stopwatch-accurate.
+retain recent days and can be disabled); overlapping Screen Time rows are
+de-overlapped so a day can never sum past 24h. Web "time" groups visits from
+**all** browsers into one timeline, splits it into browsing sessions at 15-minute
+idle gaps, and credits each visit the (capped) gap to the next — a proxy, not a
+true focus signal. CLI durations use the real elapsed time your shell recorded
+(zsh `EXTENDED_HISTORY`); entries without one get a small nominal credit. Treat
+the numbers as **directional trends**, not stopwatch-accurate.
 
 ## Contributing / Security / License
 
