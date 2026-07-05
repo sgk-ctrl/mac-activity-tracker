@@ -203,6 +203,24 @@ def test_interleaved_browsers_share_one_timeline(tmp_path, monkeypatch):
 
 
 # ------------------------------------------------------------- read_only_db
+def test_unreadable_db_degrades_to_warning(tmp_path, monkeypatch):
+    # No Full Disk Access looks like: connect fails, then the temp-copy
+    # fallback raises PermissionError. Collectors must warn, not traceback.
+    dbdir = tmp_path / "Library/Application Support/Knowledge"
+    dbdir.mkdir(parents=True)
+    db = dbdir / "knowledgeC.db"
+    _make_knowledgec(str(db), [])
+    db.chmod(0o000)
+    monkeypatch.setattr(tracker, "HOME", str(tmp_path))
+    warnings = []
+    try:
+        out = tracker.collect_app_usage(dt.datetime(2026, 5, 31), warnings)
+    finally:
+        db.chmod(0o644)  # let pytest clean tmp_path up
+    assert out == []
+    assert any("Full Disk Access" in w for w in warnings)
+
+
 def test_read_only_db_propagates_caller_errors(tmp_path):
     # a query error inside the with-block must propagate as-is — the context
     # manager must NOT treat it as a connection failure and yield again

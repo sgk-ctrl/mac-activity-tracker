@@ -178,7 +178,7 @@ def collect_app_usage(since, warnings):
     try:
         with read_only_db(db) as conn:
             rows = list(conn.execute(q, (since_cf,)))
-    except sqlite3.Error as e:
+    except (sqlite3.Error, OSError) as e:
         warnings.append(f"Could not read knowledgeC.db (grant Full Disk Access): {e}")
         return out
     intervals = []
@@ -265,7 +265,7 @@ def collect_chrome_like(path, since, label, warnings):
                 "SELECT urls.url, visits.visit_time FROM visits "
                 "JOIN urls ON urls.id = visits.url ORDER BY visits.visit_time"
             ).fetchall()
-    except sqlite3.Error as e:
+    except (sqlite3.Error, OSError) as e:
         warnings.append(f"{label}: {e}")
         return []
     rows = []
@@ -289,7 +289,7 @@ def collect_safari(since, warnings):
                 "FROM history_visits hv JOIN history_items hi ON hi.id = hv.history_item "
                 "ORDER BY hv.visit_time"
             ).fetchall()
-    except sqlite3.Error as e:
+    except (sqlite3.Error, OSError) as e:
         warnings.append(f"Safari: {e}")
         return []
     rows = []
