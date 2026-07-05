@@ -120,9 +120,11 @@ function render() {
   const agenticMin=sum(S.filter(s=>s.is_agentic).map(s=>s.minutes));
 
   const byDay={}; S.forEach(s=>{(byDay[s.start.slice(0,10)]=byDay[s.start.slice(0,10)]||[]).push(s);});
+  // count only app-to-app changes: mixing web visits in would inflate the
+  // number with every alternation between a browser tab and its host browser
   let switches=0;
-  Object.values(byDay).forEach(a=>{a.sort((x,y)=>x.start<y.start?-1:1);
-    for(let i=1;i<a.length;i++) if(a[i].name!==a[i-1].name) switches++;});
+  Object.values(byDay).forEach(a=>{const apps=a.filter(s=>s.kind==="app").sort((x,y)=>x.start<y.start?-1:1);
+    for(let i=1;i<apps.length;i++) if(apps[i].name!==apps[i-1].name) switches++;});
   const switchesDay=Math.round(switches/nDays);
 
   const distEntries=Object.entries(by("name")).filter(([n])=>{
@@ -166,7 +168,7 @@ function render() {
     {n:pctFocus+"%", l:"Deep-focus (Coding + AI)", d:`${fmtH(focusMin)} over ${nDays} days`, c:pctFocus>45?"up":"neu"},
     {n:fmtH(agenticMin), l:"Agentic / AI tools", d:pctAgentic+"% of active time", c:"up"},
     {n:switchesDay, l:"App switches / day", d:switchesDay>60?"high fragmentation":"moderate", c:switchesDay>60?"down":"neu"},
-    {n:fmtH(distMin), l:"Distraction time", d:`top: ${esc(topDist[0])} (${fmtH(topDist[1])})`, c:pctDist>18?"down":"neu"},
+    {n:fmtH(distMin), l:"Distraction time", d:`top: ${topDist[0]} (${fmtH(topDist[1])})`, c:pctDist>18?"down":"neu"},
   ];
   document.getElementById("kpis").innerHTML = kpis.map(k=>
     `<div class="kpi"><div class="n">${esc(k.n)}</div><div class="l">${esc(k.l)}</div>
@@ -223,7 +225,7 @@ function render() {
      p:`Agentic/AI tools ran ~${fmtH(agenticMin)}. Strong base — the leverage now is chaining them so context passes automatically instead of copy-paste.`},
     {ic:"🔀",t:["Efficiency","t-eff"],b:`~${switchesDay} app switches per day`,
      p:`Context-switching is the biggest hidden tax here. Batching comms (${commPct}% of time) into 2–3 fixed blocks would recover focus time.`},
-    {ic:"⚠️",t:["Watch","t-watch"],b:`${pctDist}% of active time was distraction (${esc(topDist[0])} led)`,
+    {ic:"⚠️",t:["Watch","t-watch"],b:`${pctDist}% of active time was distraction (${topDist[0]} led)`,
      p:`~${fmtH(distMin)} over ${nDays} days. Most clustered in the evening — a soft site limit after 20:00 would catch it.`},
   ];
   document.getElementById("insights").innerHTML=insights.map(i=>
