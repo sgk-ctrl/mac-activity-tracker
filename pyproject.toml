@@ -1,6 +1,6 @@
 [project]
 name = "mac-activity-tracker"
-version = "0.1.0"
+version = "0.2.0"
 description = "100% local macOS activity tracker with a private biweekly productivity review."
 readme = "README.md"
 requires-python = ">=3.9"

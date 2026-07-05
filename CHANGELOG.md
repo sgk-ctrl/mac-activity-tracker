@@ -3,7 +3,7 @@
 All notable changes to this project are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/); this project uses [SemVer](https://semver.org/).
 
-## [0.2.0] - 2026-07-05
+## [0.2.0] - 2026-07-06
 
 Accuracy & trust release — the three P1 items from the v0.1.0 expert reviews.
 
