@@ -11,6 +11,8 @@ It answers: *Where does my Mac time actually go? How much of it is deep focus vs
 
 > **Preview it now with zero setup:** open [`dashboard.sample.html`](dashboard.sample.html) — it's built from synthetic sample data, so the whole UI works before you touch your own data.
 
+![Dashboard built from the synthetic sample data](assets/dashboard.png)
+
 ## Who this is for
 
 - **Privacy-conscious knowledge workers** (developers, researchers, writers) who want quantified-self insight but won't send their browsing/app history to a cloud service.
@@ -25,9 +27,6 @@ It answers: *Where does my Mac time actually go? How much of it is deep focus vs
 - **Windows or Linux users.** It reads macOS-specific data (Screen Time, macOS browser paths); it is macOS-only by design.
 - **People who want a zero-terminal GUI app.** Setup is a couple of command-line steps and a Full Disk Access grant. There's no installer or menu-bar app (yet).
 - **Teams wanting shared cloud dashboards.** There is intentionally no server, account, or sync — that's the point.
-
-<!-- Add a real screenshot/GIF here before publishing: assets/demo.gif -->
-<!-- ![Dashboard](assets/demo.gif) -->
 
 ## Why you can trust it
 

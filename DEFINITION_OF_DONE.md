@@ -33,7 +33,7 @@ A version is "done" only when **all** of these hold. ✅ = met in v0.1.0.
 ### Docs & OSS hygiene
 - ✅ README with a "what's read / where it goes" table and who-it's-for/-not-for.
 - ✅ LICENSE, PRIVACY, SECURITY, CONTRIBUTING, Code of Conduct, CHANGELOG.
-- ⬜ A real screenshot/GIF in the README (placeholder in place — add before announcing).
+- ✅ A real screenshot in the README (`assets/dashboard.png`, built from the synthetic sample data).
 
 **Definition of Done for a single PR:** `make test` + `make lint` pass · no real
 data/secrets in the diff · privacy defaults unchanged or the change is opt-in and
