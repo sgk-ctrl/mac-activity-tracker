@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd template for an automatic biweekly review.
+
+  Before installing, substitute BOTH placeholders (the README has a one-liner):
+    __LABEL__  a reverse-DNS label unique to you, e.g. com.yourname.activityreview
+    __PATH__   the absolute path to your clone of this repo
+
+  Caveats:
+    * StartInterval fires ~14 days after load; if the Mac is asleep when due it
+      runs once on wake, so the cadence is approximate, not calendar-exact. Use
+      StartCalendarInterval instead if you need a fixed day/time.
+    * Keep the repo folder user-owned and NOT world-writable — launchd runs this
+      script as you every cycle.
+    * review.log may contain app/site names; it is git-ignored. Delete it anytime.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>__LABEL__</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__PATH__/scripts/run_review.sh</string>
+    </array>
+
+    <key>StartInterval</key>
+    <integer>1209600</integer><!-- 14 days -->
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>__PATH__/review.log</string>
+    <key>StandardErrorPath</key>
+    <string>__PATH__/review.log</string>
+</dict>
+</plist>

@@ -1,0 +1,24 @@
+[project]
+name = "mac-activity-tracker"
+version = "0.1.0"
+description = "100% local macOS activity tracker with a private biweekly productivity review."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Sandy" }]
+keywords = ["macos", "productivity", "screen-time", "privacy", "local-first", "quantified-self"]
+dependencies = []   # runtime is stdlib-only, on purpose
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.5"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

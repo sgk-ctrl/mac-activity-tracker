@@ -1,0 +1,42 @@
+# ---- Private captured data — NEVER commit ----
+my_activity_data.json
+activity_data.json
+*_activity_data.json
+review.log
+*.log
+
+# Built from YOUR data; regenerate locally (keep only the synthetic sample preview)
+dashboard.html
+
+# Keep the synthetic sample + its preview (safe, no real data)
+!sample/sample_data.json
+!dashboard.sample.html
+
+# ---- Temp SQLite copies the tracker may create ----
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+!tests/fixtures/**
+
+# ---- User-generated launchd agent (contains your real path) ----
+com.*.activityreview.plist
+!packaging/com.example.activityreview.plist
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ---- OS / editors ----
+.DS_Store
+.idea/
+.vscode/
