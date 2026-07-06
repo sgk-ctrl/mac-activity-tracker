@@ -235,6 +235,48 @@ def test_read_only_db_propagates_caller_errors(tmp_path):
             ro.execute("SELECT missing_col FROM no_such_table")
 
 
+# -------------------------------------------------------- schema variations
+def test_knowledgec_alt_stream_fallback(tmp_path, monkeypatch):
+    # some macOS versions record focus under /app/inFocus instead of /app/usage
+    dbdir = tmp_path / "Library/Application Support/Knowledge"
+    dbdir.mkdir(parents=True)
+    day = dt.datetime(2026, 6, 1, 10, 0)
+    rows = [("/app/inFocus", "com.microsoft.VSCode", _cf(day), _cf(day + dt.timedelta(hours=1)))]
+    _make_knowledgec(str(dbdir / "knowledgeC.db"), rows)
+    monkeypatch.setattr(tracker, "HOME", str(tmp_path))
+    out = tracker.collect_app_usage(dt.datetime(2026, 5, 31), [])
+    assert [s["name"] for s in out] == ["VS Code"]
+
+
+def test_knowledgec_unknown_shape_warns(tmp_path, monkeypatch):
+    # a ZOBJECT with missing columns (future macOS) must warn, not crash
+    dbdir = tmp_path / "Library/Application Support/Knowledge"
+    dbdir.mkdir(parents=True)
+    conn = sqlite3.connect(str(dbdir / "knowledgeC.db"))
+    conn.execute("CREATE TABLE ZOBJECT (ZSTREAMNAME TEXT, ZWEIRDNEWCOL TEXT)")
+    conn.commit()
+    conn.close()
+    monkeypatch.setattr(tracker, "HOME", str(tmp_path))
+    warnings = []
+    out = tracker.collect_app_usage(dt.datetime(2026, 5, 31), warnings)
+    assert out == []
+    assert any("missing columns" in w for w in warnings)
+
+
+def test_knowledgec_no_zobject_table_warns(tmp_path, monkeypatch):
+    dbdir = tmp_path / "Library/Application Support/Knowledge"
+    dbdir.mkdir(parents=True)
+    conn = sqlite3.connect(str(dbdir / "knowledgeC.db"))
+    conn.execute("CREATE TABLE SOMETHINGELSE (x TEXT)")
+    conn.commit()
+    conn.close()
+    monkeypatch.setattr(tracker, "HOME", str(tmp_path))
+    warnings = []
+    out = tracker.collect_app_usage(dt.datetime(2026, 5, 31), warnings)
+    assert out == []
+    assert any("no ZOBJECT table" in w for w in warnings)
+
+
 # ------------------------------------------------------------ trend history
 def test_summarize_has_aggregates_and_no_names():
     sessions = [

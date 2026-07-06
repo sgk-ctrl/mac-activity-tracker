@@ -160,6 +160,45 @@ def _split_at_midnight(start, end):
         yield cur, end
 
 
+# stream names that carry app-focus intervals, by macOS generation; the first
+# one that yields rows wins
+KNOWLEDGEC_STREAMS = ("/app/usage", "/app/inFocus")
+KNOWLEDGEC_COLUMNS = {"ZSTREAMNAME", "ZVALUESTRING", "ZSTARTDATE", "ZENDDATE"}
+
+
+def _knowledgec_rows(conn, since_cf, warnings):
+    """Probe the schema before querying: knowledgeC.db's shape varies across
+    macOS versions. Unknown shapes degrade to a warning, never a crash."""
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(ZOBJECT)")}
+    if not cols:
+        warnings.append(
+            "knowledgeC.db has no ZOBJECT table (unrecognized macOS version?) - "
+            "Screen Time app usage skipped. Please open a GitHub issue with your macOS version."
+        )
+        return []
+    missing = KNOWLEDGEC_COLUMNS - cols
+    if missing:
+        warnings.append(
+            f"knowledgeC.db ZOBJECT is missing columns {sorted(missing)} "
+            "(unrecognized macOS version?) - Screen Time app usage skipped. "
+            "Please open a GitHub issue with your macOS version."
+        )
+        return []
+    q = """
+        SELECT ZVALUESTRING AS bundle, ZSTARTDATE AS s, ZENDDATE AS e
+        FROM ZOBJECT
+        WHERE ZSTREAMNAME = ?
+          AND ZSTARTDATE IS NOT NULL AND ZENDDATE IS NOT NULL
+          AND ZSTARTDATE > ?
+        ORDER BY ZSTARTDATE
+    """
+    for stream in KNOWLEDGEC_STREAMS:
+        rows = list(conn.execute(q, (stream, since_cf)))
+        if rows:
+            return rows
+    return []
+
+
 def collect_app_usage(since, warnings):
     """Screen Time app-focus intervals from knowledgeC.db, de-overlapped so
     daily totals can never exceed wall-clock time."""
@@ -169,17 +208,9 @@ def collect_app_usage(since, warnings):
         warnings.append("knowledgeC.db not found - Screen Time app usage unavailable.")
         return out
     since_cf = (since - MAC_EPOCH).total_seconds()
-    q = """
-        SELECT ZVALUESTRING AS bundle, ZSTARTDATE AS s, ZENDDATE AS e
-        FROM ZOBJECT
-        WHERE ZSTREAMNAME = '/app/usage'
-          AND ZSTARTDATE IS NOT NULL AND ZENDDATE IS NOT NULL
-          AND ZSTARTDATE > ?
-        ORDER BY ZSTARTDATE
-    """
     try:
         with read_only_db(db) as conn:
-            rows = list(conn.execute(q, (since_cf,)))
+            rows = _knowledgec_rows(conn, since_cf, warnings)
     except (sqlite3.Error, OSError) as e:
         warnings.append(f"Could not read knowledgeC.db (grant Full Disk Access): {e}")
         return out
