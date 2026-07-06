@@ -5,6 +5,10 @@ activity_data.json
 review.log
 *.log
 
+# Trend snapshots: aggregates + your notes, no names — but still yours.
+# (sample/history/ is synthetic and stays tracked; this matches root only)
+/history/
+
 # Built from YOUR data; regenerate locally (keep only the synthetic sample preview)
 dashboard.html
 
