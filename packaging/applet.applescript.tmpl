@@ -1,0 +1,37 @@
+-- Activity Review.app — a tiny launcher for mac-activity-tracker.
+-- Compiled from this template by packaging/build_app.sh (osacompile ships
+-- with macOS: no Xcode, no dependencies, and you can read this whole file).
+-- __PATH__ is replaced with your repo path at build time.
+--
+-- Why an applet and not a menu-bar daemon: the toolkit's promise is "no
+-- always-on process". This app launches, does one thing, and quits.
+
+set repoPath to "__PATH__"
+
+set choices to {"Run biweekly review", "Run review + log an experiment note", "Focus mode: block distractions for 60 min", "Focus mode: off", "Preview focus blocklist"}
+set choice to choose from list choices with prompt "Everything runs locally on this Mac." default items {"Run biweekly review"} with title "MacBook Activity"
+if choice is false then return
+set choice to item 1 of choice
+
+if choice starts with "Run" then
+	set noteArg to ""
+	if choice contains "note" then
+		set noteText to text returned of (display dialog "What will you try before the next review?" default answer "" with title "Experiment note")
+		if noteText is not "" then set noteArg to " --note " & quoted form of noteText
+	end if
+	do shell script "cd " & quoted form of repoPath & " && python3 tracker.py" & noteArg & " >> review.log 2>&1; python3 build_dashboard.py --data my_activity_data.json --out dashboard.html >> review.log 2>&1"
+	do shell script "open " & quoted form of (repoPath & "/dashboard.html")
+
+else if choice is "Focus mode: block distractions for 60 min" then
+	-- timed: blocks now, auto-restores in 60 min even if this app has quit
+	do shell script "cd " & quoted form of repoPath & " && nohup /bin/bash scripts/focus.sh 60 >/dev/null 2>&1 &" with administrator privileges
+	display notification "Your distraction sites are blocked for 60 minutes." with title "Focus mode ON"
+
+else if choice is "Focus mode: off" then
+	do shell script "cd " & quoted form of repoPath & " && /bin/bash scripts/focus.sh off" with administrator privileges
+	display notification "Sites unblocked." with title "Focus mode OFF"
+
+else if choice is "Preview focus blocklist" then
+	set blockText to do shell script "cd " & quoted form of repoPath & " && python3 scripts/focus_blocklist.py"
+	display dialog "Focus mode would block:" & return & return & blockText buttons {"OK"} default button "OK" with title "MacBook Activity"
+end if

@@ -30,3 +30,8 @@ jobs:
           python sample/build_sample_data.py
           python build_dashboard.py --data sample/sample_data.json --out /tmp/dash.html
           test -s /tmp/dash.html
+      - name: Smoke — Mac app compiles (macOS only)
+        if: runner.os == 'macOS'
+        run: |
+          bash packaging/build_app.sh dist
+          test -d "dist/Activity Review.app"

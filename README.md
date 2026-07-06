@@ -102,6 +102,30 @@ open dashboard.html
 
 Or just: `make review`.
 
+## Install as a Mac app
+
+Prefer double-clicking to typing? Build the launcher app (uses `osacompile`,
+which ships with macOS — no Xcode, no downloads):
+
+```bash
+make app        # builds "Activity Review.app" into ~/Applications
+```
+
+The app is a plain AppleScript applet — read
+[`packaging/applet.applescript.tmpl`](packaging/applet.applescript.tmpl) to
+audit everything it can do. Double-click it for a menu:
+
+- **Run biweekly review** — collect, build, and open your dashboard
+- **Run review + log an experiment note** — same, plus the note your next review will check
+- **Focus mode: 60 min / off** — block your distraction sites (asks for your password — it edits `/etc/hosts`)
+- **Preview focus blocklist** — see what would be blocked
+
+**Best part:** grant Full Disk Access to *the app* instead of your terminal —
+a much narrower grant (System Settings ▸ Privacy & Security ▸ Full Disk Access
+▸ + ▸ `~/Applications/Activity Review.app`). It launches, does one thing, and
+quits — still no always-on process. Rebuild with `make app` if you move the
+repo folder.
+
 ### Granting Full Disk Access
 
 Reading the Screen Time and browser databases requires **Full Disk Access** for the terminal you run this from:

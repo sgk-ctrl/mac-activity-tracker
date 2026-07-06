@@ -3,6 +3,18 @@
 All notable changes to this project are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/); this project uses [SemVer](https://semver.org/).
 
+## [0.5.0] - 2026-07-06
+
+### Added
+- **"Activity Review.app"** — a double-clickable Mac app built locally with
+  `make app` (osacompile; ships with macOS, no Xcode). Menu: run review,
+  review + experiment note, focus mode 60 min / off, preview blocklist.
+  Grant Full Disk Access to the app itself — a much narrower grant than
+  terminal-wide. Still no always-on process: it launches, acts, quits.
+  Auditable: the whole app is one AppleScript template
+  (`packaging/applet.applescript.tmpl`).
+- CI smoke-builds the app bundle on the macOS runner.
+
 ## [0.4.0] - 2026-07-06
 
 The deep-work release: measure your focus blocks, see what breaks them, and

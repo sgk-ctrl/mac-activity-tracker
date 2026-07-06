@@ -1,12 +1,16 @@
-.PHONY: help sample dashboard review test lint clean
+.PHONY: help sample dashboard review app test lint clean
 
 help:
 	@echo "make sample     - regenerate synthetic sample data"
 	@echo "make dashboard  - build dashboard.sample.html from sample data"
 	@echo "make review     - collect YOUR data + build + open dashboard (macOS)"
+	@echo "make app        - build 'Activity Review.app' into ~/Applications (macOS)"
 	@echo "make test       - run the test suite"
 	@echo "make lint       - ruff check + format check"
 	@echo "make clean      - remove build output and caches (keeps sample)"
+
+app:
+	bash packaging/build_app.sh
 
 sample:
 	python3 sample/build_sample_data.py
