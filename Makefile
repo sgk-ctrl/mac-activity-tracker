@@ -12,7 +12,7 @@ sample:
 	python3 sample/build_sample_data.py
 
 dashboard: sample
-	python3 build_dashboard.py --data sample/sample_data.json --out dashboard.sample.html
+	python3 build_dashboard.py --data sample/sample_data.json --history-dir sample/history --out dashboard.sample.html
 
 review:
 	bash scripts/run_review.sh

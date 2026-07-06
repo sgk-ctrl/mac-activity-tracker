@@ -396,6 +396,61 @@ def redact(sessions):
     return sessions
 
 
+def summarize(sessions, note=""):
+    """Aggregate metrics for the trend history. Deliberately contains NO app,
+    site, or command names — only category totals — so a snapshot file is far
+    less sensitive than the raw data (it is still git-ignored)."""
+    from categories import DISTRACTION_CATEGORIES, FOCUS_CATEGORIES
+
+    comm_cats = {"Communication", "Meetings"}
+    total = focus = dist = comm = agentic = 0.0
+    by_day_apps: dict = {}
+    for s in sessions:
+        m = s["minutes"]
+        total += m
+        if s["category"] in FOCUS_CATEGORIES:
+            focus += m
+        if s["category"] in DISTRACTION_CATEGORIES:
+            dist += m
+        if s["category"] in comm_cats:
+            comm += m
+        if s.get("is_agentic"):
+            agentic += m
+        if s["kind"] == "app":
+            by_day_apps.setdefault(s["start"][:10], []).append((s["start"], s["name"]))
+    switches = 0
+    for entries in by_day_apps.values():
+        entries.sort()
+        switches += sum(1 for a, b in zip(entries, entries[1:]) if a[1] != b[1])
+    n_days = len({s["start"][:10] for s in sessions}) or 1
+    return {
+        "total_min": round(total, 1),
+        "focus_min": round(focus, 1),
+        "dist_min": round(dist, 1),
+        "comm_min": round(comm, 1),
+        "agentic_min": round(agentic, 1),
+        "switches_per_day": round(switches / n_days, 1),
+        "days": n_days,
+        "note": note,
+    }
+
+
+def write_snapshot(history_dir, window_start, window_end, generated_at, summary):
+    """Persist one aggregate snapshot per run (same-day re-runs overwrite)."""
+    os.makedirs(history_dir, exist_ok=True)
+    snap = {
+        "date": window_end,
+        "window_start": window_start,
+        "window_end": window_end,
+        "generated_at": generated_at,
+        **summary,
+    }
+    path = os.path.join(history_dir, f"{window_end}.json")
+    with open(path, "w") as f:
+        json.dump(snap, f, indent=1)
+    return path
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Collect local macOS activity into JSON.")
     ap.add_argument("--days", type=int, default=14, help="lookback window (default 14)")
@@ -404,6 +459,19 @@ def main(argv=None):
     ap.add_argument("--no-shell", action="store_true", help="skip shell/CLI history")
     ap.add_argument(
         "--redact", action="store_true", help="store category + time only, drop all app/site names"
+    )
+    ap.add_argument(
+        "--note",
+        default="",
+        help="one line you plan to try before the next review (stored locally in the trend history)",
+    )
+    ap.add_argument(
+        "--history-dir",
+        default="history",
+        help="where aggregate trend snapshots are written (default: history/)",
+    )
+    ap.add_argument(
+        "--no-history", action="store_true", help="do not write a trend snapshot for this run"
     )
     args = ap.parse_args(argv)
 
@@ -446,6 +514,16 @@ def main(argv=None):
 
     total_h = sum(s["minutes"] for s in sessions) / 60
     print(f"\nWrote {args.out} - {len(sessions)} sessions, ~{total_h:.1f}h (estimated).")
+
+    if sessions and not args.no_history:
+        snap = write_snapshot(
+            args.history_dir,
+            out["window_start"],
+            out["window_end"],
+            out["generated_at"],
+            summarize(sessions, note=args.note),
+        )
+        print(f"Trend snapshot: {snap} (aggregates only, no names)")
     if warnings:
         print("\nNotes:")
         for w in warnings:

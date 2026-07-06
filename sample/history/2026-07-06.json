@@ -1,0 +1,14 @@
+{
+ "date": "2026-07-06",
+ "window_start": "2026-06-23",
+ "window_end": "2026-07-06",
+ "generated_at": "2026-07-06T11:03:41",
+ "total_min": 3222.0,
+ "focus_min": 1359.0,
+ "dist_min": 496.0,
+ "comm_min": 545.0,
+ "agentic_min": 695.0,
+ "switches_per_day": 8.4,
+ "days": 14,
+ "note": ""
+}

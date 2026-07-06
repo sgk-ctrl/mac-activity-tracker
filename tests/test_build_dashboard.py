@@ -70,6 +70,54 @@ def test_script_injection_is_neutralized(tmp_path):
     assert parsed["sessions"][0]["name"] == payload
 
 
+def test_history_is_embedded_and_note_stays_inert(tmp_path):
+    # trend snapshots (including a hostile note) must embed as inert JSON
+    data = {
+        "source": "live",
+        "window_start": "2026-01-01",
+        "window_end": "2026-01-14",
+        "generated_at": "2026-01-14T10:00:00",
+        "sessions": [
+            {
+                "start": "2026-01-01T09:00",
+                "name": "VS Code",
+                "kind": "app",
+                "category": "Coding",
+                "is_agentic": False,
+                "minutes": 30,
+            }
+        ],
+    }
+    hist = tmp_path / "history"
+    hist.mkdir()
+    hostile_note = "</script><script>alert(1)</script>"
+    (hist / "2026-01-14.json").write_text(
+        json.dumps(
+            {
+                "date": "2026-01-14",
+                "total_min": 100,
+                "focus_min": 40,
+                "dist_min": 10,
+                "agentic_min": 20,
+                "switches_per_day": 5,
+                "note": hostile_note,
+            }
+        )
+    )
+    (hist / "garbage.json").write_text("{not json")  # must not crash the build
+    out = tmp_path / "dash.html"
+    build_dashboard.build(
+        _write(tmp_path, data), str(out), "vendor/chart.umd.min.js", history_dir=str(hist)
+    )
+    html = out.read_text()
+    assert "</script><script>alert(1)" not in html  # neutralized
+    m = re.search(r'<script id="activity-data" type="application/json">(.*?)</script>', html, re.S)
+    raw = m.group(1).replace("\\u0026", "&").replace("\\u003c", "<").replace("\\u003e", ">")
+    parsed = json.loads(raw)
+    assert parsed["history"][0]["note"] == hostile_note
+    assert len(parsed["history"]) == 1  # corrupt file skipped
+
+
 def test_chart_src_is_attribute_escaped(tmp_path):
     # a hostile --chart-src must not break out of the src="..." attribute
     data = {

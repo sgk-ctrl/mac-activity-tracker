@@ -235,6 +235,76 @@ def test_read_only_db_propagates_caller_errors(tmp_path):
             ro.execute("SELECT missing_col FROM no_such_table")
 
 
+# ------------------------------------------------------------ trend history
+def test_summarize_has_aggregates_and_no_names():
+    sessions = [
+        {
+            "start": "2026-06-01T09:00",
+            "name": "VS Code",
+            "kind": "app",
+            "category": "Coding",
+            "is_agentic": False,
+            "minutes": 60,
+        },
+        {
+            "start": "2026-06-01T10:00",
+            "name": "Claude",
+            "kind": "app",
+            "category": "AI / Agentic",
+            "is_agentic": True,
+            "minutes": 30,
+        },
+        {
+            "start": "2026-06-01T11:00",
+            "name": "youtube.com",
+            "kind": "web",
+            "category": "Media",
+            "is_agentic": False,
+            "minutes": 10,
+        },
+    ]
+    s = tracker.summarize(sessions, note="try batching slack")
+    assert s["total_min"] == 100
+    assert s["focus_min"] == 90  # Coding + AI / Agentic
+    assert s["agentic_min"] == 30
+    assert s["dist_min"] == 10
+    assert s["switches_per_day"] == 1  # VS Code -> Claude (web excluded)
+    assert s["note"] == "try batching slack"
+    # invariant: snapshots must never leak names
+    assert "VS Code" not in json_dumps(s) and "youtube" not in json_dumps(s)
+
+
+def json_dumps(obj):
+    import json
+
+    return json.dumps(obj)
+
+
+def test_write_snapshot_roundtrip(tmp_path):
+    p = tracker.write_snapshot(
+        str(tmp_path / "history"),
+        "2026-06-01",
+        "2026-06-14",
+        "2026-06-14T09:00:00",
+        {"total_min": 100.0, "focus_min": 50.0, "note": "x"},
+    )
+    import json
+
+    snap = json.loads(open(p).read())
+    assert snap["date"] == "2026-06-14"
+    assert snap["focus_min"] == 50.0
+    # same-day rerun overwrites, not duplicates
+    tracker.write_snapshot(
+        str(tmp_path / "history"),
+        "2026-06-01",
+        "2026-06-14",
+        "2026-06-14T10:00:00",
+        {"total_min": 120.0},
+    )
+    files = list((tmp_path / "history").iterdir())
+    assert len(files) == 1
+
+
 # ----------------------------------------------------------- CLI durations
 def test_cli_uses_real_elapsed_duration(tmp_path, monkeypatch):
     hist = (

@@ -99,6 +99,50 @@ def main():
         json.dump(data, f, indent=1)
     print(f"{out}: {len(sessions)} sessions, {sum(s['minutes'] for s in sessions) / 60:.1f}h")
 
+    # ---- synthetic trend history: 3 past reviews + the current one ----
+    import sys
+
+    sys.path.insert(0, os.path.dirname(HERE))
+    import tracker
+
+    hist_dir = os.path.join(HERE, "history")
+    os.makedirs(hist_dir, exist_ok=True)
+    for f_old in os.listdir(hist_dir):
+        if f_old.endswith(".json"):
+            os.remove(os.path.join(hist_dir, f_old))
+    cur = tracker.summarize(sessions, note="")
+    notes = [
+        "batch Slack into two windows",
+        "no YouTube before 20:00",
+        "route quick tasks through claude CLI instead of the browser",
+    ]
+    # earlier reviews trend slightly worse the further back they are, so the
+    # preview shows believable improvement
+    for i, back in enumerate((3, 2, 1)):
+        end = data["window_start"]
+        end_d = dt.date.fromisoformat(end) - dt.timedelta(days=14 * (back - 1))
+        drift = 1 - 0.07 * back
+        snap = {
+            "date": end_d.isoformat(),
+            "window_start": (end_d - dt.timedelta(days=13)).isoformat(),
+            "window_end": end_d.isoformat(),
+            "generated_at": end_d.isoformat() + "T09:00:00",
+            "total_min": round(cur["total_min"] * (0.9 + 0.05 * back), 1),
+            "focus_min": round(cur["focus_min"] * drift, 1),
+            "dist_min": round(cur["dist_min"] * (1 + 0.12 * back), 1),
+            "comm_min": cur["comm_min"],
+            "agentic_min": round(cur["agentic_min"] * drift, 1),
+            "switches_per_day": round(cur["switches_per_day"] * (1 + 0.1 * back), 1),
+            "days": 14,
+            "note": notes[i],
+        }
+        with open(os.path.join(hist_dir, f"{snap['date']}.json"), "w") as f:
+            json.dump(snap, f, indent=1)
+    tracker.write_snapshot(
+        hist_dir, data["window_start"], data["window_end"], data["generated_at"], cur
+    )
+    print(f"{hist_dir}: 4 trend snapshots")
+
 
 if __name__ == "__main__":
     main()

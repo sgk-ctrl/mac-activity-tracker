@@ -1,13 +1,13 @@
 {
- "generated_at": "2026-07-05T23:55:58",
- "window_start": "2026-06-22",
- "window_end": "2026-07-05",
+ "generated_at": "2026-07-06T11:03:41",
+ "window_start": "2026-06-23",
+ "window_end": "2026-07-06",
  "source": "sample",
  "estimates": true,
  "redacted": false,
  "sessions": [
   {
-   "start": "2026-06-22T08:25",
+   "start": "2026-06-23T08:25",
    "name": "github.com",
    "kind": "web",
    "category": "Coding",
@@ -15,311 +15,15 @@
    "minutes": 12
   },
   {
-   "start": "2026-06-22T08:39",
+   "start": "2026-06-23T08:39",
    "name": "Spotify",
    "kind": "app",
    "category": "Media",
    "is_agentic": false,
    "minutes": 7
-  },
-  {
-   "start": "2026-06-22T08:46",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-22T08:52",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 40
-  },
-  {
-   "start": "2026-06-22T09:37",
-   "name": "reddit.com",
-   "kind": "web",
-   "category": "Social",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-22T09:52",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-22T10:05",
-   "name": "Codex CLI",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-22T10:10",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-22T10:17",
-   "name": "stackoverflow.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-22T10:29",
-   "name": "Arc",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-22T10:45",
-   "name": "VS Code",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-22T11:00",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-22T11:13",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-22T11:27",
-   "name": "chatgpt.com",
-   "kind": "web",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 55
-  },
-  {
-   "start": "2026-06-22T12:22",
-   "name": "Hermes",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-22T12:32",
-   "name": "Messages",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-22T12:39",
-   "name": "Figma",
-   "kind": "app",
-   "category": "Design",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-22T12:51",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-22T13:16",
-   "name": "reddit.com",
-   "kind": "web",
-   "category": "Social",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-23T08:19",
-   "name": "vercel.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 25
   },
   {
    "start": "2026-06-23T08:46",
-   "name": "figma.com",
-   "kind": "web",
-   "category": "Design",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-23T08:56",
-   "name": "Arc",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-23T09:09",
-   "name": "github.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-23T09:19",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-23T09:29",
-   "name": "Figma",
-   "kind": "app",
-   "category": "Design",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-23T10:00",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 55
-  },
-  {
-   "start": "2026-06-23T11:00",
-   "name": "reddit.com",
-   "kind": "web",
-   "category": "Social",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-23T11:08",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-23T11:17",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-23T11:23",
-   "name": "Arc",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-23T11:31",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-23T11:54",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-23T12:25",
-   "name": "news.ycombinator.com",
-   "kind": "web",
-   "category": "News / Reading",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-23T12:40",
-   "name": "Arc",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-24T09:10",
-   "name": "Arc",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-24T09:17",
-   "name": "Codex CLI",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-24T09:24",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-24T09:36",
-   "name": "VS Code",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-24T09:43",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 55
-  },
-  {
-   "start": "2026-06-24T10:41",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -327,199 +31,23 @@
    "minutes": 3
   },
   {
-   "start": "2026-06-24T10:46",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-24T11:08",
-   "name": "Messages",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-24T11:21",
-   "name": "amazon.com",
-   "kind": "web",
-   "category": "Shopping",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-24T11:41",
-   "name": "notion.so",
-   "kind": "web",
-   "category": "Docs / Notes",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-24T12:01",
-   "name": "Spotify",
-   "kind": "app",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-24T12:09",
-   "name": "Zoom",
-   "kind": "app",
-   "category": "Meetings",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-24T12:17",
-   "name": "Zoom",
-   "kind": "app",
-   "category": "Meetings",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-24T12:36",
-   "name": "notion.so",
-   "kind": "web",
-   "category": "Docs / Notes",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-24T12:55",
+   "start": "2026-06-23T08:52",
    "name": "Google Chrome",
    "kind": "app",
    "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-24T13:13",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-24T13:24",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
    "is_agentic": false,
    "minutes": 40
   },
   {
-   "start": "2026-06-25T08:14",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-25T08:24",
-   "name": "amazon.com",
+   "start": "2026-06-23T09:37",
+   "name": "reddit.com",
    "kind": "web",
-   "category": "Shopping",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-25T08:52",
-   "name": "stackoverflow.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-25T09:16",
-   "name": "amazon.com",
-   "kind": "web",
-   "category": "Shopping",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-25T09:47",
-   "name": "Figma",
-   "kind": "app",
-   "category": "Design",
+   "category": "Social",
    "is_agentic": false,
    "minutes": 12
   },
   {
-   "start": "2026-06-25T10:04",
-   "name": "Zoom",
-   "kind": "app",
-   "category": "Meetings",
-   "is_agentic": false,
-   "minutes": 55
-  },
-  {
-   "start": "2026-06-25T11:02",
-   "name": "Mail",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-25T11:06",
-   "name": "Codex CLI",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-25T11:16",
-   "name": "github.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-25T11:44",
-   "name": "stackoverflow.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-25T11:57",
-   "name": "Zoom",
-   "kind": "app",
-   "category": "Meetings",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-25T12:15",
-   "name": "Spotify",
-   "kind": "app",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-25T12:33",
-   "name": "Figma",
-   "kind": "app",
-   "category": "Design",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-25T12:37",
+   "start": "2026-06-23T09:52",
    "name": "Cursor",
    "kind": "app",
    "category": "Coding",
@@ -527,79 +55,31 @@
    "minutes": 12
   },
   {
-   "start": "2026-06-25T12:51",
-   "name": "Notion",
+   "start": "2026-06-23T10:05",
+   "name": "Codex CLI",
    "kind": "app",
-   "category": "Docs / Notes",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-23T10:10",
+   "name": "Slack",
+   "kind": "app",
+   "category": "Communication",
    "is_agentic": false,
    "minutes": 3
   },
   {
-   "start": "2026-06-25T12:59",
-   "name": "iTerm2",
-   "kind": "app",
+   "start": "2026-06-23T10:17",
+   "name": "stackoverflow.com",
+   "kind": "web",
    "category": "Coding",
    "is_agentic": false,
    "minutes": 12
   },
   {
-   "start": "2026-06-25T13:15",
-   "name": "Spotify",
-   "kind": "app",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-25T13:31",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-25T14:02",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-26T09:39",
-   "name": "news.ycombinator.com",
-   "kind": "web",
-   "category": "News / Reading",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-26T09:50",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-06-26T10:19",
-   "name": "Hermes",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-26T10:22",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-26T10:40",
+   "start": "2026-06-23T10:29",
    "name": "Arc",
    "kind": "app",
    "category": "Browsing",
@@ -607,255 +87,79 @@
    "minutes": 12
   },
   {
-   "start": "2026-06-26T10:56",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-26T11:14",
-   "name": "Spotify",
-   "kind": "app",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-26T11:34",
-   "name": "figma.com",
-   "kind": "web",
-   "category": "Design",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-26T11:44",
-   "name": "Codex CLI",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-26T11:56",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-26T12:05",
-   "name": "amazon.com",
-   "kind": "web",
-   "category": "Shopping",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-26T12:17",
-   "name": "stackoverflow.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-26T12:25",
-   "name": "claude.ai",
-   "kind": "web",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 55
-  },
-  {
-   "start": "2026-06-26T13:23",
-   "name": "claude.ai",
-   "kind": "web",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-26T13:42",
-   "name": "iTerm2",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-26T13:56",
+   "start": "2026-06-23T10:45",
    "name": "VS Code",
    "kind": "app",
    "category": "Coding",
    "is_agentic": false,
-   "minutes": 3
+   "minutes": 12
   },
   {
-   "start": "2026-06-27T09:35",
-   "name": "Slack",
+   "start": "2026-06-23T11:00",
+   "name": "Cursor",
    "kind": "app",
-   "category": "Communication",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-23T11:13",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
    "is_agentic": false,
    "minutes": 12
   },
   {
-   "start": "2026-06-27T09:51",
-   "name": "youtube.com",
-   "kind": "web",
-   "category": "Media",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-27T10:00",
-   "name": "Figma",
-   "kind": "app",
-   "category": "Design",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-27T10:05",
-   "name": "Zoom",
-   "kind": "app",
-   "category": "Meetings",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-27T10:13",
-   "name": "notion.so",
-   "kind": "web",
-   "category": "Docs / Notes",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-28T08:34",
-   "name": "news.ycombinator.com",
-   "kind": "web",
-   "category": "News / Reading",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-28T08:52",
-   "name": "Zoom",
-   "kind": "app",
-   "category": "Meetings",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-28T08:59",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-28T09:04",
-   "name": "Notion",
-   "kind": "app",
-   "category": "Docs / Notes",
-   "is_agentic": false,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-28T09:13",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 55
-  },
-  {
-   "start": "2026-06-28T10:11",
+   "start": "2026-06-23T11:27",
    "name": "chatgpt.com",
    "kind": "web",
    "category": "AI / Agentic",
    "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-28T10:18",
-   "name": "reddit.com",
-   "kind": "web",
-   "category": "Social",
-   "is_agentic": false,
    "minutes": 55
   },
   {
-   "start": "2026-06-28T11:15",
-   "name": "Cursor",
+   "start": "2026-06-23T12:22",
+   "name": "Hermes",
    "kind": "app",
-   "category": "Coding",
+   "category": "AI / Agentic",
    "is_agentic": true,
    "minutes": 7
   },
   {
-   "start": "2026-06-29T08:18",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-29T08:31",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-29T08:39",
+   "start": "2026-06-23T12:32",
    "name": "Messages",
    "kind": "app",
    "category": "Communication",
    "is_agentic": false,
-   "minutes": 12
+   "minutes": 3
   },
   {
-   "start": "2026-06-29T08:52",
-   "name": "github.com",
-   "kind": "web",
-   "category": "Coding",
+   "start": "2026-06-23T12:39",
+   "name": "Figma",
+   "kind": "app",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-23T12:51",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
    "is_agentic": false,
    "minutes": 25
   },
   {
-   "start": "2026-06-29T09:20",
-   "name": "news.ycombinator.com",
+   "start": "2026-06-23T13:16",
+   "name": "reddit.com",
    "kind": "web",
-   "category": "News / Reading",
+   "category": "Social",
    "is_agentic": false,
-   "minutes": 40
+   "minutes": 12
   },
   {
-   "start": "2026-06-29T10:04",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-29T10:12",
-   "name": "gmail.com",
-   "kind": "web",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-29T10:33",
+   "start": "2026-06-24T08:19",
    "name": "vercel.com",
    "kind": "web",
    "category": "Coding",
@@ -863,95 +167,39 @@
    "minutes": 25
   },
   {
-   "start": "2026-06-29T10:58",
-   "name": "Mail",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-29T11:06",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-29T11:17",
-   "name": "chatgpt.com",
+   "start": "2026-06-24T08:46",
+   "name": "figma.com",
    "kind": "web",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-29T11:26",
-   "name": "Hermes",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-29T11:33",
-   "name": "Messages",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 55
-  },
-  {
-   "start": "2026-06-29T12:32",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 40
-  },
-  {
-   "start": "2026-06-29T13:13",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-29T13:28",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
+   "category": "Design",
    "is_agentic": false,
    "minutes": 7
   },
   {
-   "start": "2026-06-29T13:41",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-06-29T13:47",
-   "name": "iTerm2",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-29T13:59",
-   "name": "Google Chrome",
+   "start": "2026-06-24T08:56",
+   "name": "Arc",
    "kind": "app",
    "category": "Browsing",
    "is_agentic": false,
    "minutes": 12
   },
   {
-   "start": "2026-06-29T14:17",
+   "start": "2026-06-24T09:09",
+   "name": "github.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-24T09:19",
+   "name": "youtube.com",
+   "kind": "web",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-24T09:29",
    "name": "Figma",
    "kind": "app",
    "category": "Design",
@@ -959,15 +207,39 @@
    "minutes": 25
   },
   {
-   "start": "2026-06-29T14:46",
-   "name": "VS Code",
+   "start": "2026-06-24T10:00",
+   "name": "Slack",
    "kind": "app",
-   "category": "Coding",
+   "category": "Communication",
    "is_agentic": false,
    "minutes": 55
   },
   {
-   "start": "2026-06-29T15:42",
+   "start": "2026-06-24T11:00",
+   "name": "reddit.com",
+   "kind": "web",
+   "category": "Social",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-24T11:08",
+   "name": "Slack",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-24T11:17",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-24T11:23",
    "name": "Arc",
    "kind": "app",
    "category": "Browsing",
@@ -975,103 +247,47 @@
    "minutes": 7
   },
   {
-   "start": "2026-06-30T09:32",
-   "name": "Google Chrome",
-   "kind": "app",
-   "category": "Browsing",
+   "start": "2026-06-24T11:31",
+   "name": "youtube.com",
+   "kind": "web",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-24T11:54",
+   "name": "youtube.com",
+   "kind": "web",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-24T12:25",
+   "name": "news.ycombinator.com",
+   "kind": "web",
+   "category": "News / Reading",
    "is_agentic": false,
    "minutes": 12
   },
   {
-   "start": "2026-06-30T09:50",
-   "name": "github.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-30T10:14",
-   "name": "linkedin.com",
-   "kind": "web",
-   "category": "Social",
-   "is_agentic": false,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-30T10:33",
-   "name": "Claude (Cowork)",
+   "start": "2026-06-24T12:40",
+   "name": "Arc",
    "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-30T10:51",
-   "name": "iTerm2",
-   "kind": "app",
-   "category": "Coding",
+   "category": "Browsing",
    "is_agentic": false,
    "minutes": 3
   },
   {
-   "start": "2026-06-30T10:54",
-   "name": "linkedin.com",
-   "kind": "web",
-   "category": "Social",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-30T11:06",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 40
-  },
-  {
-   "start": "2026-06-30T11:50",
-   "name": "Google Chrome",
+   "start": "2026-06-25T09:10",
+   "name": "Arc",
    "kind": "app",
    "category": "Browsing",
    "is_agentic": false,
-   "minutes": 18
+   "minutes": 3
   },
   {
-   "start": "2026-06-30T12:11",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 7
-  },
-  {
-   "start": "2026-06-30T12:23",
-   "name": "claude.ai",
-   "kind": "web",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-30T12:44",
-   "name": "VS Code",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-06-30T13:01",
-   "name": "Claude (Cowork)",
-   "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 18
-  },
-  {
-   "start": "2026-06-30T13:20",
+   "start": "2026-06-25T09:17",
    "name": "Codex CLI",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1079,7 +295,703 @@
    "minutes": 7
   },
   {
-   "start": "2026-06-30T13:32",
+   "start": "2026-06-25T09:24",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-25T09:36",
+   "name": "VS Code",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-25T09:43",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 55
+  },
+  {
+   "start": "2026-06-25T10:41",
+   "name": "Claude (Cowork)",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-25T10:46",
+   "name": "youtube.com",
+   "kind": "web",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-25T11:08",
+   "name": "Messages",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-25T11:21",
+   "name": "amazon.com",
+   "kind": "web",
+   "category": "Shopping",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-25T11:41",
+   "name": "notion.so",
+   "kind": "web",
+   "category": "Docs / Notes",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-25T12:01",
+   "name": "Spotify",
+   "kind": "app",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-25T12:09",
+   "name": "Zoom",
+   "kind": "app",
+   "category": "Meetings",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-25T12:17",
+   "name": "Zoom",
+   "kind": "app",
+   "category": "Meetings",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-25T12:36",
+   "name": "notion.so",
+   "kind": "web",
+   "category": "Docs / Notes",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-25T12:55",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-25T13:13",
+   "name": "youtube.com",
+   "kind": "web",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-25T13:24",
+   "name": "youtube.com",
+   "kind": "web",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 40
+  },
+  {
+   "start": "2026-06-26T08:14",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-26T08:24",
+   "name": "amazon.com",
+   "kind": "web",
+   "category": "Shopping",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-26T08:52",
+   "name": "stackoverflow.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-26T09:16",
+   "name": "amazon.com",
+   "kind": "web",
+   "category": "Shopping",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-26T09:47",
+   "name": "Figma",
+   "kind": "app",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-26T10:04",
+   "name": "Zoom",
+   "kind": "app",
+   "category": "Meetings",
+   "is_agentic": false,
+   "minutes": 55
+  },
+  {
+   "start": "2026-06-26T11:02",
+   "name": "Mail",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-26T11:06",
+   "name": "Codex CLI",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-26T11:16",
+   "name": "github.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-26T11:44",
+   "name": "stackoverflow.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-26T11:57",
+   "name": "Zoom",
+   "kind": "app",
+   "category": "Meetings",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-26T12:15",
+   "name": "Spotify",
+   "kind": "app",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-26T12:33",
+   "name": "Figma",
+   "kind": "app",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-26T12:37",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-26T12:51",
+   "name": "Notion",
+   "kind": "app",
+   "category": "Docs / Notes",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-26T12:59",
+   "name": "iTerm2",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-26T13:15",
+   "name": "Spotify",
+   "kind": "app",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-26T13:31",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-26T14:02",
+   "name": "Claude (Cowork)",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-27T09:39",
+   "name": "news.ycombinator.com",
+   "kind": "web",
+   "category": "News / Reading",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-27T09:50",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-27T10:19",
+   "name": "Hermes",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-27T10:22",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-27T10:40",
+   "name": "Arc",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-27T10:56",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-28T08:33",
+   "name": "reddit.com",
+   "kind": "web",
+   "category": "Social",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-28T08:44",
+   "name": "claude.ai",
+   "kind": "web",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-28T08:59",
+   "name": "iTerm2",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-28T09:03",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-28T09:10",
+   "name": "claude.ai",
+   "kind": "web",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-28T09:33",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-28T09:39",
+   "name": "Messages",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-28T09:54",
+   "name": "Slack",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T09:21",
+   "name": "VS Code",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-29T09:26",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-29T09:38",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T09:45",
+   "name": "Spotify",
+   "kind": "app",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T09:52",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 40
+  },
+  {
+   "start": "2026-06-29T10:33",
+   "name": "Codex CLI",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-29T10:50",
+   "name": "chatgpt.com",
+   "kind": "web",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T11:01",
+   "name": "Slack",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-29T11:04",
+   "name": "claude.ai",
+   "kind": "web",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 40
+  },
+  {
+   "start": "2026-06-29T11:46",
+   "name": "twitter.com",
+   "kind": "web",
+   "category": "Social",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-29T12:11",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T12:18",
+   "name": "VS Code",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-29T12:32",
+   "name": "github.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-29T12:50",
+   "name": "chatgpt.com",
+   "kind": "web",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T12:59",
+   "name": "news.ycombinator.com",
+   "kind": "web",
+   "category": "News / Reading",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T13:09",
+   "name": "Hermes",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-29T13:16",
+   "name": "github.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-29T13:23",
+   "name": "Hermes",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-29T13:38",
+   "name": "Zoom",
+   "kind": "app",
+   "category": "Meetings",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-29T13:53",
+   "name": "Figma",
+   "kind": "app",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 55
+  },
+  {
+   "start": "2026-06-30T08:21",
+   "name": "Figma",
+   "kind": "app",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-30T08:40",
+   "name": "VS Code",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-30T08:44",
+   "name": "Arc",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-30T09:12",
+   "name": "Claude (Cowork)",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-30T09:43",
+   "name": "Messages",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-06-30T10:06",
+   "name": "iTerm2",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-30T10:16",
+   "name": "VS Code",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-30T10:27",
+   "name": "Claude (Cowork)",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 40
+  },
+  {
+   "start": "2026-06-30T11:08",
+   "name": "Claude (Cowork)",
+   "kind": "app",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-30T11:23",
+   "name": "Slack",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-30T11:36",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": true,
+   "minutes": 3
+  },
+  {
+   "start": "2026-06-30T11:42",
+   "name": "iTerm2",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-30T11:54",
+   "name": "Google Chrome",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 12
+  },
+  {
+   "start": "2026-06-30T12:12",
+   "name": "Figma",
+   "kind": "app",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-06-30T12:41",
+   "name": "VS Code",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 55
+  },
+  {
+   "start": "2026-06-30T13:37",
+   "name": "Arc",
+   "kind": "app",
+   "category": "Browsing",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-06-30T13:50",
+   "name": "figma.com",
+   "kind": "web",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-07-01T08:33",
+   "name": "news.ycombinator.com",
+   "kind": "web",
+   "category": "News / Reading",
+   "is_agentic": false,
+   "minutes": 25
+  },
+  {
+   "start": "2026-07-01T08:58",
+   "name": "news.ycombinator.com",
+   "kind": "web",
+   "category": "News / Reading",
+   "is_agentic": false,
+   "minutes": 40
+  },
+  {
+   "start": "2026-07-01T09:43",
    "name": "twitter.com",
    "kind": "web",
    "category": "Social",
@@ -1087,23 +999,87 @@
    "minutes": 3
   },
   {
-   "start": "2026-06-30T13:38",
-   "name": "Cursor",
+   "start": "2026-07-01T09:46",
+   "name": "VS Code",
    "kind": "app",
    "category": "Coding",
-   "is_agentic": true,
-   "minutes": 18
+   "is_agentic": false,
+   "minutes": 3
   },
   {
-   "start": "2026-06-30T14:01",
-   "name": "Google Chrome",
+   "start": "2026-07-01T09:55",
+   "name": "Claude (Cowork)",
    "kind": "app",
-   "category": "Browsing",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 3
+  },
+  {
+   "start": "2026-07-01T10:02",
+   "name": "youtube.com",
+   "kind": "web",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-07-01T10:11",
+   "name": "Spotify",
+   "kind": "app",
+   "category": "Media",
+   "is_agentic": false,
+   "minutes": 40
+  },
+  {
+   "start": "2026-07-01T10:51",
+   "name": "github.com",
+   "kind": "web",
+   "category": "Coding",
    "is_agentic": false,
    "minutes": 18
   },
   {
-   "start": "2026-06-30T14:21",
+   "start": "2026-07-01T11:11",
+   "name": "notion.so",
+   "kind": "web",
+   "category": "Docs / Notes",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-07-01T11:24",
+   "name": "Mail",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 55
+  },
+  {
+   "start": "2026-07-01T12:22",
+   "name": "github.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 40
+  },
+  {
+   "start": "2026-07-01T13:04",
+   "name": "twitter.com",
+   "kind": "web",
+   "category": "Social",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-07-01T13:22",
+   "name": "VS Code",
+   "kind": "app",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-07-01T13:45",
    "name": "Google Chrome",
    "kind": "app",
    "category": "Browsing",
@@ -1111,7 +1087,31 @@
    "minutes": 3
   },
   {
-   "start": "2026-06-30T14:28",
+   "start": "2026-07-01T13:48",
+   "name": "Messages",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-07-01T13:52",
+   "name": "chatgpt.com",
+   "kind": "web",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 12
+  },
+  {
+   "start": "2026-07-01T14:07",
+   "name": "Mail",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 55
+  },
+  {
+   "start": "2026-07-01T15:06",
    "name": "Messages",
    "kind": "app",
    "category": "Communication",
@@ -1119,7 +1119,7 @@
    "minutes": 40
   },
   {
-   "start": "2026-06-30T15:08",
+   "start": "2026-07-01T15:46",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1127,7 +1127,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-06-30T15:23",
+   "start": "2026-07-01T16:01",
    "name": "docs.python.org",
    "kind": "web",
    "category": "Coding",
@@ -1135,7 +1135,7 @@
    "minutes": 40
   },
   {
-   "start": "2026-06-30T16:04",
+   "start": "2026-07-01T16:42",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1143,7 +1143,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-06-30T16:24",
+   "start": "2026-07-01T17:02",
    "name": "github.com",
    "kind": "web",
    "category": "Coding",
@@ -1151,7 +1151,7 @@
    "minutes": 25
   },
   {
-   "start": "2026-07-01T08:23",
+   "start": "2026-07-02T08:23",
    "name": "Figma",
    "kind": "app",
    "category": "Design",
@@ -1159,7 +1159,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-01T08:35",
+   "start": "2026-07-02T08:35",
    "name": "Messages",
    "kind": "app",
    "category": "Communication",
@@ -1167,7 +1167,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-01T08:56",
+   "start": "2026-07-02T08:56",
    "name": "Codex CLI",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1175,7 +1175,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-01T09:05",
+   "start": "2026-07-02T09:05",
    "name": "VS Code",
    "kind": "app",
    "category": "Coding",
@@ -1183,7 +1183,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-01T09:14",
+   "start": "2026-07-02T09:14",
    "name": "github.com",
    "kind": "web",
    "category": "Coding",
@@ -1191,7 +1191,7 @@
    "minutes": 40
   },
   {
-   "start": "2026-07-01T09:59",
+   "start": "2026-07-02T09:59",
    "name": "Mail",
    "kind": "app",
    "category": "Communication",
@@ -1199,7 +1199,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-01T10:06",
+   "start": "2026-07-02T10:06",
    "name": "Preview",
    "kind": "app",
    "category": "Docs / Notes",
@@ -1207,7 +1207,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-01T10:20",
+   "start": "2026-07-02T10:20",
    "name": "gmail.com",
    "kind": "web",
    "category": "Communication",
@@ -1215,7 +1215,7 @@
    "minutes": 25
   },
   {
-   "start": "2026-07-01T10:47",
+   "start": "2026-07-02T10:47",
    "name": "Notion",
    "kind": "app",
    "category": "Docs / Notes",
@@ -1223,7 +1223,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-01T10:55",
+   "start": "2026-07-02T10:55",
    "name": "Cursor",
    "kind": "app",
    "category": "Coding",
@@ -1231,7 +1231,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-01T11:08",
+   "start": "2026-07-02T11:08",
    "name": "calendar.google.com",
    "kind": "web",
    "category": "Meetings",
@@ -1239,7 +1239,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-01T11:20",
+   "start": "2026-07-02T11:20",
    "name": "twitter.com",
    "kind": "web",
    "category": "Social",
@@ -1247,7 +1247,7 @@
    "minutes": 40
   },
   {
-   "start": "2026-07-01T12:04",
+   "start": "2026-07-02T12:04",
    "name": "Slack",
    "kind": "app",
    "category": "Communication",
@@ -1255,7 +1255,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-01T12:12",
+   "start": "2026-07-02T12:12",
    "name": "Arc",
    "kind": "app",
    "category": "Browsing",
@@ -1263,7 +1263,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-01T12:21",
+   "start": "2026-07-02T12:21",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1271,7 +1271,7 @@
    "minutes": 40
   },
   {
-   "start": "2026-07-01T13:02",
+   "start": "2026-07-02T13:02",
    "name": "iTerm2",
    "kind": "app",
    "category": "Coding",
@@ -1279,7 +1279,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-01T13:11",
+   "start": "2026-07-02T13:11",
    "name": "vercel.com",
    "kind": "web",
    "category": "Coding",
@@ -1287,7 +1287,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-01T13:23",
+   "start": "2026-07-02T13:23",
    "name": "Google Chrome",
    "kind": "app",
    "category": "Browsing",
@@ -1295,7 +1295,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-02T08:04",
+   "start": "2026-07-03T08:04",
    "name": "Spotify",
    "kind": "app",
    "category": "Media",
@@ -1303,7 +1303,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-02T08:17",
+   "start": "2026-07-03T08:17",
    "name": "VS Code",
    "kind": "app",
    "category": "Coding",
@@ -1311,7 +1311,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-02T08:38",
+   "start": "2026-07-03T08:38",
    "name": "Hermes",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1319,7 +1319,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-02T08:43",
+   "start": "2026-07-03T08:43",
    "name": "VS Code",
    "kind": "app",
    "category": "Coding",
@@ -1327,7 +1327,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-02T08:56",
+   "start": "2026-07-03T08:56",
    "name": "Figma",
    "kind": "app",
    "category": "Design",
@@ -1335,7 +1335,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-02T09:17",
+   "start": "2026-07-03T09:17",
    "name": "Mail",
    "kind": "app",
    "category": "Communication",
@@ -1343,7 +1343,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-02T09:26",
+   "start": "2026-07-03T09:26",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1351,7 +1351,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-02T09:35",
+   "start": "2026-07-03T09:35",
    "name": "Google Chrome",
    "kind": "app",
    "category": "Browsing",
@@ -1359,7 +1359,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-02T09:59",
+   "start": "2026-07-03T09:59",
    "name": "github.com",
    "kind": "web",
    "category": "Coding",
@@ -1367,7 +1367,7 @@
    "minutes": 40
   },
   {
-   "start": "2026-07-02T10:42",
+   "start": "2026-07-03T10:42",
    "name": "iTerm2",
    "kind": "app",
    "category": "Coding",
@@ -1375,7 +1375,7 @@
    "minutes": 55
   },
   {
-   "start": "2026-07-02T11:43",
+   "start": "2026-07-03T11:43",
    "name": "reddit.com",
    "kind": "web",
    "category": "Social",
@@ -1383,7 +1383,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-02T11:49",
+   "start": "2026-07-03T11:49",
    "name": "amazon.com",
    "kind": "web",
    "category": "Shopping",
@@ -1391,7 +1391,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-02T12:05",
+   "start": "2026-07-03T12:05",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1399,7 +1399,7 @@
    "minutes": 40
   },
   {
-   "start": "2026-07-02T12:51",
+   "start": "2026-07-03T12:51",
    "name": "Google Chrome",
    "kind": "app",
    "category": "Browsing",
@@ -1407,7 +1407,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-02T13:09",
+   "start": "2026-07-03T13:09",
    "name": "Codex CLI",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1415,7 +1415,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-02T13:26",
+   "start": "2026-07-03T13:26",
    "name": "Notion",
    "kind": "app",
    "category": "Docs / Notes",
@@ -1423,7 +1423,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-03T08:35",
+   "start": "2026-07-04T08:35",
    "name": "github.com",
    "kind": "web",
    "category": "Coding",
@@ -1431,7 +1431,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-03T08:42",
+   "start": "2026-07-04T08:42",
    "name": "twitter.com",
    "kind": "web",
    "category": "Social",
@@ -1439,7 +1439,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-03T08:50",
+   "start": "2026-07-04T08:50",
    "name": "news.ycombinator.com",
    "kind": "web",
    "category": "News / Reading",
@@ -1447,7 +1447,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-03T09:08",
+   "start": "2026-07-04T09:08",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1455,7 +1455,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-03T09:24",
+   "start": "2026-07-04T09:24",
    "name": "Cursor",
    "kind": "app",
    "category": "Coding",
@@ -1463,7 +1463,7 @@
    "minutes": 25
   },
   {
-   "start": "2026-07-03T09:49",
+   "start": "2026-07-04T09:49",
    "name": "Cursor",
    "kind": "app",
    "category": "Coding",
@@ -1471,7 +1471,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-03T10:03",
+   "start": "2026-07-04T10:03",
    "name": "figma.com",
    "kind": "web",
    "category": "Design",
@@ -1479,7 +1479,7 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-03T10:16",
+   "start": "2026-07-04T10:16",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1487,71 +1487,63 @@
    "minutes": 12
   },
   {
-   "start": "2026-07-03T10:33",
-   "name": "Claude (Cowork)",
+   "start": "2026-07-05T08:01",
+   "name": "Figma",
    "kind": "app",
-   "category": "AI / Agentic",
-   "is_agentic": true,
-   "minutes": 12
-  },
-  {
-   "start": "2026-07-03T10:50",
-   "name": "github.com",
-   "kind": "web",
-   "category": "Coding",
+   "category": "Design",
    "is_agentic": false,
-   "minutes": 7
+   "minutes": 18
   },
   {
-   "start": "2026-07-03T11:00",
+   "start": "2026-07-05T08:19",
+   "name": "Slack",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 40
+  },
+  {
+   "start": "2026-07-05T09:00",
+   "name": "Slack",
+   "kind": "app",
+   "category": "Communication",
+   "is_agentic": false,
+   "minutes": 18
+  },
+  {
+   "start": "2026-07-05T09:20",
    "name": "claude.ai",
    "kind": "web",
    "category": "AI / Agentic",
    "is_agentic": true,
-   "minutes": 3
-  },
-  {
-   "start": "2026-07-03T11:05",
-   "name": "stackoverflow.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-07-03T11:17",
-   "name": "gmail.com",
-   "kind": "web",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 12
-  },
-  {
-   "start": "2026-07-03T11:30",
-   "name": "Cursor",
-   "kind": "app",
-   "category": "Coding",
-   "is_agentic": true,
    "minutes": 25
   },
   {
-   "start": "2026-07-03T11:56",
-   "name": "Cursor",
-   "kind": "app",
+   "start": "2026-07-05T09:50",
+   "name": "github.com",
+   "kind": "web",
    "category": "Coding",
-   "is_agentic": true,
-   "minutes": 18
-  },
-  {
-   "start": "2026-07-03T12:16",
-   "name": "Arc",
-   "kind": "app",
-   "category": "Browsing",
    "is_agentic": false,
-   "minutes": 18
+   "minutes": 12
   },
   {
-   "start": "2026-07-03T12:35",
+   "start": "2026-07-05T10:03",
+   "name": "Zoom",
+   "kind": "app",
+   "category": "Meetings",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-07-05T10:11",
+   "name": "Figma",
+   "kind": "app",
+   "category": "Design",
+   "is_agentic": false,
+   "minutes": 3
+  },
+  {
+   "start": "2026-07-06T08:14",
    "name": "Spotify",
    "kind": "app",
    "category": "Media",
@@ -1559,7 +1551,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-03T12:42",
+   "start": "2026-07-06T08:21",
    "name": "iTerm2",
    "kind": "app",
    "category": "Coding",
@@ -1567,7 +1559,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-03T12:53",
+   "start": "2026-07-06T08:32",
    "name": "Claude (Cowork)",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1575,7 +1567,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-03T12:59",
+   "start": "2026-07-06T08:38",
    "name": "Slack",
    "kind": "app",
    "category": "Communication",
@@ -1583,7 +1575,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-03T13:06",
+   "start": "2026-07-06T08:45",
    "name": "reddit.com",
    "kind": "web",
    "category": "Social",
@@ -1591,15 +1583,23 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-04T09:02",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
+   "start": "2026-07-06T08:53",
+   "name": "news.ycombinator.com",
+   "kind": "web",
+   "category": "News / Reading",
    "is_agentic": false,
-   "minutes": 25
+   "minutes": 12
   },
   {
-   "start": "2026-07-04T09:29",
+   "start": "2026-07-06T09:07",
+   "name": "stackoverflow.com",
+   "kind": "web",
+   "category": "Coding",
+   "is_agentic": false,
+   "minutes": 7
+  },
+  {
+   "start": "2026-07-06T09:16",
    "name": "Codex CLI",
    "kind": "app",
    "category": "AI / Agentic",
@@ -1607,7 +1607,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-04T09:32",
+   "start": "2026-07-06T09:19",
    "name": "Messages",
    "kind": "app",
    "category": "Communication",
@@ -1615,7 +1615,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-04T09:41",
+   "start": "2026-07-06T09:28",
    "name": "VS Code",
    "kind": "app",
    "category": "Coding",
@@ -1623,7 +1623,7 @@
    "minutes": 25
   },
   {
-   "start": "2026-07-04T10:12",
+   "start": "2026-07-06T09:59",
    "name": "github.com",
    "kind": "web",
    "category": "Coding",
@@ -1631,7 +1631,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-04T10:31",
+   "start": "2026-07-06T10:18",
    "name": "Spotify",
    "kind": "app",
    "category": "Media",
@@ -1639,7 +1639,7 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-04T10:40",
+   "start": "2026-07-06T10:27",
    "name": "youtube.com",
    "kind": "web",
    "category": "Media",
@@ -1647,7 +1647,7 @@
    "minutes": 18
   },
   {
-   "start": "2026-07-04T10:59",
+   "start": "2026-07-06T10:46",
    "name": "gmail.com",
    "kind": "web",
    "category": "Communication",
@@ -1655,7 +1655,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-04T11:02",
+   "start": "2026-07-06T10:49",
    "name": "Zoom",
    "kind": "app",
    "category": "Meetings",
@@ -1663,7 +1663,7 @@
    "minutes": 3
   },
   {
-   "start": "2026-07-04T11:06",
+   "start": "2026-07-06T10:53",
    "name": "amazon.com",
    "kind": "web",
    "category": "Shopping",
@@ -1671,58 +1671,42 @@
    "minutes": 7
   },
   {
-   "start": "2026-07-05T08:16",
-   "name": "linkedin.com",
-   "kind": "web",
-   "category": "Social",
-   "is_agentic": false,
-   "minutes": 40
-  },
-  {
-   "start": "2026-07-05T08:58",
-   "name": "Mail",
-   "kind": "app",
-   "category": "Communication",
-   "is_agentic": false,
-   "minutes": 40
-  },
-  {
-   "start": "2026-07-05T09:43",
-   "name": "github.com",
-   "kind": "web",
-   "category": "Coding",
-   "is_agentic": false,
-   "minutes": 25
-  },
-  {
-   "start": "2026-07-05T10:08",
+   "start": "2026-07-06T11:02",
    "name": "Messages",
    "kind": "app",
    "category": "Communication",
    "is_agentic": false,
-   "minutes": 55
+   "minutes": 3
   },
   {
-   "start": "2026-07-05T11:06",
-   "name": "amazon.com",
+   "start": "2026-07-06T11:10",
+   "name": "chatgpt.com",
    "kind": "web",
-   "category": "Shopping",
+   "category": "AI / Agentic",
+   "is_agentic": true,
+   "minutes": 7
+  },
+  {
+   "start": "2026-07-06T11:17",
+   "name": "twitter.com",
+   "kind": "web",
+   "category": "Social",
    "is_agentic": false,
    "minutes": 25
   },
   {
-   "start": "2026-07-05T11:32",
-   "name": "claude.ai",
-   "kind": "web",
-   "category": "AI / Agentic",
+   "start": "2026-07-06T11:42",
+   "name": "Cursor",
+   "kind": "app",
+   "category": "Coding",
    "is_agentic": true,
-   "minutes": 25
+   "minutes": 12
   },
   {
-   "start": "2026-07-05T12:02",
-   "name": "Slack",
-   "kind": "app",
-   "category": "Communication",
+   "start": "2026-07-06T11:57",
+   "name": "stackoverflow.com",
+   "kind": "web",
+   "category": "Coding",
    "is_agentic": false,
    "minutes": 7
   }

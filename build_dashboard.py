@@ -29,9 +29,26 @@ def escape_for_script(data_json: str) -> str:
     )
 
 
-def build(data_path: str, out_path: str, chart_src: str) -> str:
+def load_history(history_dir: str) -> list:
+    """Read aggregate trend snapshots (oldest first). Missing dir is fine."""
+    if not history_dir or not os.path.isdir(history_dir):
+        return []
+    snaps = []
+    for name in sorted(os.listdir(history_dir)):
+        if not name.endswith(".json"):
+            continue
+        try:
+            with open(os.path.join(history_dir, name)) as f:
+                snaps.append(json.load(f))
+        except (OSError, json.JSONDecodeError):
+            continue  # a corrupt snapshot shouldn't kill the dashboard
+    return snaps
+
+
+def build(data_path: str, out_path: str, chart_src: str, history_dir: str = "") -> str:
     with open(data_path) as f:
         data = json.load(f)
+    data["history"] = load_history(history_dir)
     with open(TEMPLATE) as f:
         html = f.read()
 
@@ -55,6 +72,11 @@ def main(argv=None):
         default="vendor/chart.umd.min.js",
         help="path/URL to Chart.js as seen from the output file (default: local vendored copy)",
     )
+    ap.add_argument(
+        "--history-dir",
+        default="history",
+        help="dir of aggregate trend snapshots written by tracker.py (default: history/)",
+    )
     args = ap.parse_args(argv)
 
     if not os.path.exists(args.data):
@@ -64,7 +86,7 @@ def main(argv=None):
             "--data sample/sample_data.json"
         )
 
-    out = build(args.data, args.out, args.chart_src)
+    out = build(args.data, args.out, args.chart_src, history_dir=args.history_dir)
     print(f"Wrote {out} (data: {args.data}, chart: {args.chart_src})")
 
 
