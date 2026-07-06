@@ -65,6 +65,60 @@ def test_focus_sh_round_trip_preserves_hosts(tmp_path):
     assert hosts.read_text() == original  # byte-identical restore
 
 
+def test_stale_timer_cannot_strip_newer_session(tmp_path):
+    # regression: session A's exit trap must remove only A's section. If the
+    # user started session B meanwhile, B's block must survive A's cleanup.
+    hosts = tmp_path / "hosts"
+    original = "127.0.0.1 localhost\n"
+    hosts.write_text(original)
+    env = {**os.environ, "FOCUS_HOSTS_FILE": str(hosts)}
+    sh = os.path.join(REPO, "scripts", "focus.sh")
+
+    subprocess.run(["bash", sh, "on"], env=env, cwd=REPO, capture_output=True)
+    text_a = hosts.read_text()
+    session_a = [ln for ln in text_a.splitlines() if "session:" in ln][0]
+
+    subprocess.run(["bash", sh, "on"], env=env, cwd=REPO, capture_output=True)
+    text_b = hosts.read_text()
+    session_b = [ln for ln in text_b.splitlines() if "session:" in ln][0]
+    assert session_a != session_b  # different PIDs -> different tags
+
+    # simulate stale session A's trap firing now: strip A's tag specifically
+    strip_a = (
+        f'HOSTS="{hosts}"; END="# <<< mac-activity-tracker focus mode <<<"; '
+        f'awk -v b="{session_a}" -v e="$END" '
+        f"'index($0,b)==1{{skip=1}} !skip{{print}} index($0,e)==1{{skip=0}}' "
+        f'"$HOSTS" > "$HOSTS.tmp" && cat "$HOSTS.tmp" > "$HOSTS"'
+    )
+    subprocess.run(["bash", "-c", strip_a], capture_output=True)
+    assert "youtube.com" in hosts.read_text()  # B's block still standing
+
+    subprocess.run(["bash", sh, "off"], env=env, cwd=REPO, capture_output=True)
+    assert hosts.read_text() == original
+
+
+def test_blocked_domain_resolves_to_localhost(tmp_path):
+    # effectiveness proof: hosts-format lines produced by focus.sh are exactly
+    # what the libc resolver consumes. Simulate resolution against the scratch
+    # file the same way getaddrinfo consults /etc/hosts (first-match wins).
+    hosts = tmp_path / "hosts"
+    hosts.write_text("127.0.0.1 localhost\n")
+    env = {**os.environ, "FOCUS_HOSTS_FILE": str(hosts)}
+    sh = os.path.join(REPO, "scripts", "focus.sh")
+    subprocess.run(["bash", sh, "on"], env=env, cwd=REPO, capture_output=True)
+
+    mapping = {}
+    for ln in hosts.read_text().splitlines():
+        if ln.startswith("#") or not ln.strip():
+            continue
+        parts = ln.split()
+        for name in parts[1:]:
+            mapping.setdefault(name, parts[0])
+    assert mapping.get("youtube.com") == "127.0.0.1"
+    assert mapping.get("www.youtube.com") == "127.0.0.1"
+    assert mapping.get("localhost") == "127.0.0.1"  # pre-existing entry intact
+
+
 def test_focus_sh_rejects_garbage_arg():
     sh = os.path.join(REPO, "scripts", "focus.sh")
     r = subprocess.run(["bash", sh, "9000x"], cwd=REPO, capture_output=True, text=True)

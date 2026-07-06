@@ -165,7 +165,11 @@ sudo scripts/focus.sh off      # restore immediately
 Honesty notes: this is the **only** part of the toolkit that writes outside the
 repo folder — it adds a clearly-marked section to `/etc/hosts` (hence `sudo`)
 and `off` removes exactly that section. It's a speed bump you control, not a
-parental control; already-open tabs may keep working until reloaded.
+parental control. Two real limitations: already-open tabs may keep working
+until reloaded, and a browser with **Secure DNS / DoH** enabled resolves names
+over HTTPS and can bypass `/etc/hosts` entirely (Chrome: Settings ▸ Privacy ▸
+Security ▸ "Use secure DNS" off; Safari uses the system resolver and is
+affected by the block as expected).
 
 ## Trends across reviews (the part that changes habits)
 
