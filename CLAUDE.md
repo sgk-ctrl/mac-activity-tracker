@@ -16,7 +16,11 @@ assessment. Intended for public release on GitHub. See `README.md`,
    HTTP client, or "phone home" — not even opt-in analytics.
 2. **Read-only + no data leaks.** Source DBs are opened read-only via
    `read_only_db()`. Any temp copy must be `0700` and always removed. Never write
-   to a user's real DBs.
+   to a user's real DBs. The ONE sanctioned exception to "never write outside
+   the repo" is focus mode (`scripts/focus.sh`): it edits `/etc/hosts` between
+   exact marker lines, requires sudo, is opt-in per invocation, and `off` must
+   restore the file byte-identically (tested). Nothing else may write outside
+   the repo folder.
 3. **Private by default.** Store domains only — never full URLs, page titles, or
    shell-command arguments. Any new sensitive capture must be OFF by default and
    opt-in via an explicit flag.

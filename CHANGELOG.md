@@ -3,6 +3,26 @@
 All notable changes to this project are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/); this project uses [SemVer](https://semver.org/).
 
+## [0.4.0] - 2026-07-06
+
+The deep-work release: measure your focus blocks, see what breaks them, and
+turn on a data-driven focus mode while you work.
+
+### Added
+- **Deep-focus blocks** dashboard section: uninterrupted Coding/AI runs
+  (≥25 min, ≤10-min pauses tolerated) with blocks/day, longest, median, the
+  top **block-breaker**, and suggestions that adapt to your data (comms tools
+  → batching plan; distraction sites → focus mode; plus your statistically
+  best hour for deep work).
+- **Focus mode** (`scripts/focus.sh`): blocks your personal distraction
+  domains system-wide via a clearly-marked `/etc/hosts` section. Timed mode
+  auto-restores (even on Ctrl-C), `off` restores byte-identically (tested),
+  `list` previews without sudo. Blocklist is data-driven
+  (`scripts/focus_blocklist.py`): distraction-category domains from your own
+  activity data + a fallback list; redaction-safe.
+- CLAUDE.md documents focus mode as the single sanctioned exception to
+  "never write outside the repo".
+
 ## [0.3.0] - 2026-07-06
 
 The "own it, then share it" release: trends across reviews, an experiment log,

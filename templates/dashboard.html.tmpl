@@ -148,6 +148,7 @@ function render() {
       <div class="card"><h3>Agentic / AI tool usage</h3><canvas id="aiChart"></canvas><div class="legend" id="aiLegend"></div></div>
     </div>
     <div class="card" style="margin-top:14px"><h3>Active hours by hour of day</h3><canvas id="hourChart" style="max-height:180px"></canvas></div>
+    <div id="focusSection"></div>
     <div id="trendSection"></div>
     <h2>Biweekly assessment</h2>
     <div class="assess"><div id="insights"></div>
@@ -217,6 +218,72 @@ function render() {
   new Chart(hourChart,{type:"bar",data:{labels:[...Array(24).keys()].map(h=>h+":00"),
     datasets:[{data:hours.map(m=>+(m/60).toFixed(1)),backgroundColor:hours.map(m=>m>0?"#4c9aff":"#293040"),borderRadius:3}]},
     options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:"hours (window total)"}}}}});
+
+  // ---- deep-focus blocks: contiguous runs of focus-category sessions ----
+  const FOCUS_GAP_MIN = 10;  // a pause longer than this ends a block
+  const DEEP_MIN = 25;       // a block must reach this to count as "deep"
+  {
+    const chron = [...S].sort((a,b)=>a.start<b.start?-1:1);
+    const blocks = [], breakers = {};
+    let blk = null;
+    const startOf = s => new Date(s.start);
+    const endOf = (t,m) => new Date(t.getTime()+m*60000);
+    for (const s of chron) {
+      const isFocus = FOCUS.has(s.category);
+      if (blk) {
+        const gap = (startOf(s)-blk.end)/60000;
+        if (isFocus && gap <= FOCUS_GAP_MIN) {
+          blk.min += s.minutes; blk.end = endOf(startOf(s), s.minutes);
+          continue;
+        }
+        if (!isFocus && gap <= FOCUS_GAP_MIN && blk.min >= DEEP_MIN)
+          breakers[s.name] = (breakers[s.name]||0)+1;  // what cut a deep block short
+        blocks.push(blk); blk = null;
+      }
+      if (isFocus) blk = {end: endOf(startOf(s), s.minutes), min: s.minutes, hour: +s.start.slice(11,13)};
+    }
+    if (blk) blocks.push(blk);
+    const deep = blocks.filter(b=>b.min>=DEEP_MIN).sort((a,b)=>a.min-b.min);
+    const longest = deep.length ? deep[deep.length-1].min : 0;
+    const median = deep.length ? deep[Math.floor(deep.length/2)].min : 0;
+    const perDay = +(deep.length/nDays).toFixed(1);
+    const hourCount = {};
+    deep.forEach(b=>hourCount[b.hour]=(hourCount[b.hour]||0)+1);
+    const bestHour = Object.entries(hourCount).sort((a,b)=>b[1]-a[1])[0];
+    const topBrk = Object.entries(breakers).sort((a,b)=>b[1]-a[1]).slice(0,3);
+
+    const tips = [];
+    if (!deep.length) {
+      tips.push({b:"Start with a single protected 45-minute block",
+        p:`No block reached ${DEEP_MIN} min this window. Pick one morning slot, silence notifications, and run <code>sudo scripts/focus.sh 45</code> to hold the door shut.`});
+    } else {
+      if (bestHour) tips.push({b:`Schedule deep work at ${esc(bestHour[0])}:00 — it's when your blocks already succeed`,
+        p:`${esc(bestHour[1])} of your ${esc(deep.length)} deep blocks started then. Put a recurring calendar hold on that hour and defend it.`});
+      if (median < 45) tips.push({b:"Stretch the median block past 45 minutes",
+        p:`Half your deep blocks end by ${esc(median)} min. Turn on focus mode for the length you want — <code>sudo scripts/focus.sh 60</code> — and let the block end on purpose, not by drift.`});
+      if (topBrk.length) {
+        const [name,n] = topBrk[0];
+        const brkCat = (S.find(x=>x.name===name)||{}).category;
+        tips.push(COMM.has(brkCat)
+          ? {b:`“${esc(name)}” cut ${esc(n)} deep blocks short — batch it`,
+             p:`It's a comms tool: close it during blocks and open it at 2–3 fixed times. Its messages will survive the wait.`}
+          : {b:`“${esc(name)}” cut ${esc(n)} deep blocks short — block it during focus`,
+             p:`Focus mode blocks your personal distraction domains system-wide until the timer ends: <code>sudo scripts/focus.sh 60</code>. Off anytime with <code>sudo scripts/focus.sh off</code>.`});
+      }
+    }
+    document.getElementById("focusSection").innerHTML = `
+      <h2>Deep-focus blocks <span class="sub">(≥${DEEP_MIN} min of uninterrupted Coding/AI, ≤${FOCUS_GAP_MIN}-min pauses allowed)</span></h2>
+      <div class="kpis">
+        <div class="kpi"><div class="n">${esc(perDay)}</div><div class="l">Deep blocks / day</div>
+          <div class="d ${perDay>=2?"up":"neu"}">${esc(deep.length)} in ${esc(nDays)} days</div></div>
+        <div class="kpi"><div class="n">${esc(Math.round(longest))}m</div><div class="l">Longest block</div><div class="d neu">this window</div></div>
+        <div class="kpi"><div class="n">${esc(Math.round(median))}m</div><div class="l">Median deep block</div>
+          <div class="d ${median>=45?"up":"neu"}">${median>=45?"healthy":"room to stretch"}</div></div>
+        <div class="kpi"><div class="n">${topBrk.length?esc(topBrk[0][0]):"—"}</div><div class="l">Top block-breaker</div>
+          <div class="d neu">${topBrk.length?esc(topBrk[0][1])+" deep blocks ended":"no interruptions recorded"}</div></div>
+      </div>
+      ${tips.map(t=>`<div class="rec"><b>${t.b}</b><p>${t.p}</p></div>`).join("")}`;
+  }
 
   // ---- trends across reviews (rendered only once 2+ snapshots exist) ----
   const H = Array.isArray(DATA.history) ? DATA.history.filter(h=>h && h.total_min>0) : [];

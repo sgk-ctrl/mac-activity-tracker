@@ -119,6 +119,30 @@ python3 tracker.py --no-shell       # skip shell history
 python3 tracker.py --redact         # category + time only; drop all names
 ```
 
+## Deep-focus blocks & Focus mode
+
+The dashboard's **Deep-focus blocks** section measures your uninterrupted runs
+of Coding/AI work (≥25 min, short pauses allowed): blocks per day, longest,
+median, and — most usefully — **which app or site cuts your blocks short**.
+Suggestions adapt to your data: comms tools get a "batch it" plan, distraction
+sites get focus mode.
+
+**Focus mode** blocks your personal distraction sites system-wide while you
+work — the blocklist comes from *your own* tracked distraction domains, plus
+the usual suspects:
+
+```bash
+scripts/focus.sh list          # preview what would be blocked (no sudo)
+sudo scripts/focus.sh 60       # block for 60 min, auto-restores after
+sudo scripts/focus.sh on       # block until further notice
+sudo scripts/focus.sh off      # restore immediately
+```
+
+Honesty notes: this is the **only** part of the toolkit that writes outside the
+repo folder — it adds a clearly-marked section to `/etc/hosts` (hence `sudo`)
+and `off` removes exactly that section. It's a speed bump you control, not a
+parental control; already-open tabs may keep working until reloaded.
+
 ## Trends across reviews (the part that changes habits)
 
 Every collection run also writes an **aggregate-only snapshot** to `history/`
