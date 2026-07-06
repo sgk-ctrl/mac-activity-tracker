@@ -3,6 +3,30 @@
 All notable changes to this project are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/); this project uses [SemVer](https://semver.org/).
 
+## [0.3.0] - 2026-07-06
+
+The "own it, then share it" release: trends across reviews, an experiment log,
+one-line install, and resilience to macOS schema differences.
+
+### Added
+- **Trend history**: each run writes an aggregate-only snapshot (category
+  totals + KPIs, never names) to `history/`; with 2+ snapshots the dashboard
+  shows delta chips and a focus/agentic/distraction line chart across reviews.
+- **Experiment notes**: `tracker.py --note "what I'll try"` stores a local note
+  shown back at the top of the next review — every review checks the last
+  one's experiment.
+- **One-line installer** (`scripts/install.sh`): clones, opens the sample
+  dashboard first, then walks through the Full Disk Access grant. No sudo.
+- **Calendar launchd variant**: run on the 1st and 15th at 09:00
+  (`packaging/com.example.activityreview.calendar.plist`).
+- Sample preview now ships 4 synthetic snapshots so the trend section is
+  visible with zero setup.
+
+### Changed
+- **knowledgeC.db schema is probed before querying** — unknown macOS shapes
+  produce an actionable warning instead of a crash, and the collector falls
+  back to the `/app/inFocus` stream when `/app/usage` is empty.
+
 ## [0.2.0] - 2026-07-06
 
 Accuracy & trust release — the three P1 items from the v0.1.0 expert reviews.

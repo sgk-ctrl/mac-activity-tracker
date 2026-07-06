@@ -76,6 +76,16 @@ macOS 12+ and Python 3.9+ (both preinstalled on modern Macs). No pip packages re
 
 ## Quickstart
 
+**Easiest** — one line, shows you the sample dashboard first, then walks you through setup:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sgk-ctrl/mac-activity-tracker/main/scripts/install.sh | bash
+```
+
+(Read [`scripts/install.sh`](scripts/install.sh) first if you like — it clones this repo, builds the sample, and prints instructions. No sudo, nothing leaves your machine.)
+
+**Manual** — same thing by hand:
+
 ```bash
 git clone https://github.com/sgk-ctrl/mac-activity-tracker.git
 cd mac-activity-tracker
@@ -109,6 +119,24 @@ python3 tracker.py --no-shell       # skip shell history
 python3 tracker.py --redact         # category + time only; drop all names
 ```
 
+## Trends across reviews (the part that changes habits)
+
+Every collection run also writes an **aggregate-only snapshot** to `history/`
+(category totals and KPIs — never app, site, or command names; git-ignored like
+everything else of yours). Once two snapshots exist, the dashboard adds a
+**Trend across reviews** section: delta chips for deep-focus %, agentic %,
+distraction %, and app switches/day, plus a line chart over time.
+
+Log an experiment with each run:
+
+```bash
+python3 tracker.py --note "batch Slack into two windows"
+```
+
+The note is stored locally in the snapshot and shown back to you at the top of
+your **next** review — so every review starts by checking whether the last
+experiment worked. Skip snapshots entirely with `--no-history`.
+
 ## Customizing categories
 
 Edit [`categories.py`](categories.py) — plain data mapping apps/domains to categories and marking what counts as focus, distraction, or agentic. PRs adding common apps welcome.
@@ -123,7 +151,7 @@ sed -e "s|__PATH__|$FOLDER|g" -e "s|__LABEL__|$LABEL|g" \
 launchctl load ~/Library/LaunchAgents/$LABEL.plist
 ```
 
-It rebuilds the dashboard every ~14 days and logs to `review.log`. Cadence is approximate (a job due while the Mac is asleep runs on wake); use `StartCalendarInterval` for a fixed day/time.
+It rebuilds the dashboard every ~14 days and logs to `review.log`. Cadence is approximate (a job due while the Mac is asleep runs on wake). Prefer a fixed rhythm? Use [`packaging/com.example.activityreview.calendar.plist`](packaging/com.example.activityreview.calendar.plist) instead — it runs on the **1st and 15th at 09:00** (same install one-liner, pointed at that file).
 
 **Uninstall:** `launchctl unload ~/Library/LaunchAgents/$LABEL.plist && rm ~/Library/LaunchAgents/$LABEL.plist`, then delete `my_activity_data.json`, `dashboard.html`, and `review.log`.
 

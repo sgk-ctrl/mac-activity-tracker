@@ -15,9 +15,14 @@ Mac exactly where it is: on your Mac.
   strings, or page titles. From shell history, only the command name (argv[0])
   of known agentic tools is recorded; arguments (which may contain secrets) are
   never read into the output.
-- **You own the output.** `my_activity_data.json` and `dashboard.html` are
-  written to the repo folder and are git-ignored so they can't be committed by
-  accident. The dashboard embeds your data inline — treat it as private.
+- **You own the output.** `my_activity_data.json`, `dashboard.html`, and the
+  `history/` trend snapshots are written to the repo folder and are git-ignored
+  so they can't be committed by accident. The dashboard embeds your data
+  inline — treat it as private.
+- **Trend snapshots are aggregates only.** Each run writes one file to
+  `history/` containing category totals, KPI numbers, and your optional
+  `--note` text — never app, site, or command names. Disable with
+  `--no-history`.
 
 ## What is collected
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd template — CALENDAR variant: runs on the 1st and 15th of each month
+  at 09:00, giving a review a predictable rhythm (vs. the StartInterval
+  template's "every ~14 days since load").
+
+  Substitute BOTH placeholders before installing (same one-liner as the README,
+  pointed at this file):
+    __LABEL__  a reverse-DNS label unique to you, e.g. com.yourname.activityreview
+    __PATH__   the absolute path to your clone of this repo
+
+  If the Mac is asleep at the scheduled time, launchd runs the job when it
+  next wakes — a review is never silently skipped.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>__LABEL__</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__PATH__/scripts/run_review.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Day</key><integer>1</integer>
+            <key>Hour</key><integer>9</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Day</key><integer>15</integer>
+            <key>Hour</key><integer>9</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+    </array>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>__PATH__/review.log</string>
+    <key>StandardErrorPath</key>
+    <string>__PATH__/review.log</string>
+</dict>
+</plist>
