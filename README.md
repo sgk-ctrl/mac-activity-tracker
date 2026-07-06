@@ -151,9 +151,19 @@ median, and — most usefully — **which app or site cuts your blocks short**.
 Suggestions adapt to your data: comms tools get a "batch it" plan, distraction
 sites get focus mode.
 
-**Focus mode** blocks your personal distraction sites system-wide while you
-work — the blocklist comes from *your own* tracked distraction domains, plus
-the usual suspects:
+**Focus sessions (the app)** — the fullest version, from *Activity Review.app*:
+
+1. Asks the **goal** of the session and how long.
+2. Shows your running apps and asks **which are critical** — keep those.
+3. **Asks every other app to quit** (gracefully — they can prompt to save;
+   Finder, your terminal, and the tracker are always spared).
+4. **Blocks your distraction sites** for the duration.
+5. A lightweight guard keeps non-critical apps from re-opening until the
+   session ends — then everything is released automatically.
+
+**Focus mode (sites only, CLI)** — just the site block, no app control. The
+blocklist comes from *your own* tracked distraction domains plus the usual
+suspects:
 
 ```bash
 scripts/focus.sh list          # preview what would be blocked (no sudo)
@@ -161,6 +171,20 @@ sudo scripts/focus.sh 60       # block for 60 min, auto-restores after
 sudo scripts/focus.sh on       # block until further notice
 sudo scripts/focus.sh off      # restore immediately
 ```
+
+**App control (CLI)** — quit non-critical apps and guard the allowlist without
+touching sites. Preview safely with `DRY_RUN=1` (prints what it *would* quit):
+
+```bash
+DRY_RUN=1 scripts/focus_session.sh start "Xcode,Safari" 60 "ship the release"
+scripts/focus_session.sh start "Xcode,Safari" 60 "ship the release"   # for real
+scripts/focus_session.sh stop        # end early
+```
+
+The guard is the toolkit's **only** background process, and it exists only for
+the length of a session — the "no always-on process" promise holds otherwise.
+Apps are asked to quit, never force-killed; a protect-list always spares
+Finder, your terminal, this tracker, and system UI.
 
 Honesty notes: this is the **only** part of the toolkit that writes outside the
 repo folder — it adds a clearly-marked section to `/etc/hosts` (hence `sudo`)

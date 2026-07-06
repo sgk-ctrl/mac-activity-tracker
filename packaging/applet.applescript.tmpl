@@ -8,8 +8,8 @@
 
 set repoPath to "__PATH__"
 
-set choices to {"Run biweekly review", "Run review + log an experiment note", "Focus mode: block distractions for 60 min", "Focus mode: off", "Preview focus blocklist"}
-set choice to choose from list choices with prompt "Everything runs locally on this Mac." default items {"Run biweekly review"} with title "MacBook Activity"
+set choices to {"Start a focus session", "Run biweekly review", "Run review + log an experiment note", "Focus mode: off", "Preview focus blocklist"}
+set choice to choose from list choices with prompt "Everything runs locally on this Mac." default items {"Start a focus session"} with title "MacBook Activity"
 if choice is false then return
 set choice to item 1 of choice
 
@@ -22,14 +22,45 @@ if choice starts with "Run" then
 	do shell script "cd " & quoted form of repoPath & " && python3 tracker.py" & noteArg & " >> review.log 2>&1; python3 build_dashboard.py --data my_activity_data.json --out dashboard.html >> review.log 2>&1"
 	do shell script "open " & quoted form of (repoPath & "/dashboard.html")
 
-else if choice is "Focus mode: block distractions for 60 min" then
-	-- timed: blocks now, auto-restores in 60 min even if this app has quit
-	do shell script "cd " & quoted form of repoPath & " && nohup /bin/bash scripts/focus.sh 60 >/dev/null 2>&1 &" with administrator privileges
-	display notification "Your distraction sites are blocked for 60 minutes." with title "Focus mode ON"
+else if choice is "Start a focus session" then
+	-- 1) the goal
+	set sessionGoal to text returned of (display dialog "What's the goal of this focus session?" default answer "" with title "Focus session")
+
+	-- 2) how long
+	set durText to text returned of (display dialog "How many minutes?" default answer "60" with title "Focus session: " & sessionGoal)
+	try
+		set durMin to durText as integer
+	on error
+		set durMin to 60
+	end try
+
+	-- 3) which apps are critical — everything else will be asked to quit
+	set runningList to paragraphs of (do shell script "osascript -e 'tell application \"System Events\" to get name of (every application process whose background only is false)' | tr ',' '\\n' | sed 's/^ *//;s/ *$//' | sort -u | grep -v '^$'")
+	set keepApps to choose from list runningList with prompt "Which apps are critical for: " & sessionGoal & "?" & return & "Everything else will be asked to quit." with title "Keep these open" with multiple selections allowed
+	if keepApps is false then return
+	set AppleScript's text item delimiters to ","
+	set keepCSV to keepApps as text
+	set AppleScript's text item delimiters to ", "
+	set keepShown to keepApps as text
+	set AppleScript's text item delimiters to ""
+
+	-- 4) explicit confirmation — this quits apps and edits /etc/hosts
+	display dialog "Focus session:  " & sessionGoal & return & return & ¬
+		"• Keep open:  " & keepShown & return & ¬
+		"• All other apps will be asked to quit — save your work first." & return & ¬
+		"• Distraction sites blocked for " & durMin & " min." & return & return & ¬
+		"You can end it anytime from this app's “Focus mode: off”." ¬
+		buttons {"Cancel", "Start session"} default button "Start session" with title "Confirm focus session"
+
+	-- 5) quit non-critical apps + start the allowlist guard (no sudo needed)
+	do shell script "cd " & quoted form of repoPath & " && /bin/bash scripts/focus_session.sh start " & quoted form of keepCSV & " " & (durMin as text) & " " & quoted form of sessionGoal & " >/dev/null 2>&1"
+	-- 6) block distracting sites (needs your password — edits /etc/hosts)
+	do shell script "cd " & quoted form of repoPath & " && nohup /bin/bash scripts/focus.sh " & (durMin as text) & " >/dev/null 2>&1 &" with administrator privileges
+	display notification "Non-critical apps quit; sites blocked for " & durMin & " min." with title "Focus ON: " & sessionGoal
 
 else if choice is "Focus mode: off" then
-	do shell script "cd " & quoted form of repoPath & " && /bin/bash scripts/focus.sh off" with administrator privileges
-	display notification "Sites unblocked." with title "Focus mode OFF"
+	do shell script "cd " & quoted form of repoPath & " && /bin/bash scripts/focus_session.sh stop >/dev/null 2>&1; /bin/bash scripts/focus.sh off" with administrator privileges
+	display notification "Apps free, sites unblocked." with title "Focus mode OFF"
 
 else if choice is "Preview focus blocklist" then
 	set blockText to do shell script "cd " & quoted form of repoPath & " && python3 scripts/focus_blocklist.py"

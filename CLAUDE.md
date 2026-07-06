@@ -21,6 +21,13 @@ assessment. Intended for public release on GitHub. See `README.md`,
    exact marker lines, requires sudo, is opt-in per invocation, and `off` must
    restore the file byte-identically (tested). Nothing else may write outside
    the repo folder.
+   Focus SESSIONS (`scripts/focus_session.sh`) may quit the user's other apps,
+   but only via graceful AppleScript `quit` (never force-kill), only after an
+   explicit confirmation in the app, and never an app on the protect-list in
+   `scripts/focus_apps.py` (Finder, terminals, this tracker, system UI). Its
+   guard loop is the toolkit's only background process and must be
+   session-scoped — it exits when the session ends. `DRY_RUN=1` must make it
+   report intended quits and change nothing.
 3. **Private by default.** Store domains only — never full URLs, page titles, or
    shell-command arguments. Any new sensitive capture must be OFF by default and
    opt-in via an explicit flag.

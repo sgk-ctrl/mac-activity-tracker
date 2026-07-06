@@ -3,6 +3,32 @@
 All notable changes to this project are documented here. Format based on
 [Keep a Changelog](https://keepachangelog.com/); this project uses [SemVer](https://semver.org/).
 
+## [0.6.0] - 2026-07-06
+
+The intentional-focus release: a full focus *session*, not just a site block.
+
+### Added
+- **Focus sessions** (`scripts/focus_session.sh` + the app): name the session's
+  goal, pick which running apps are critical, and everything else is asked to
+  quit (gracefully — apps can prompt to save). A session-scoped guard keeps
+  non-critical apps from re-opening until the session ends, then releases
+  everything. Combined with the existing `/etc/hosts` site block for a clean
+  work environment.
+- **App control from the app**: the menu's "Start a focus session" runs the
+  goal → critical-apps → confirm flow, quits apps (no sudo), then blocks sites
+  (one password prompt). "Focus mode: off" ends both.
+- `scripts/focus_apps.py`: the pure, tested quit-decision with a protect-list
+  that always spares Finder, terminals, this tracker, and system UI.
+- `DRY_RUN=1` on `focus_session.sh start` reports intended quits and changes
+  nothing — safe to preview.
+- Local aggregate log of focus sessions (goal + duration + app count, no app
+  names) in git-ignored `history/focus_sessions.jsonl`.
+
+### Safety
+- Apps are only ever asked to quit via AppleScript `quit`, never force-killed.
+- The guard is the toolkit's only background process and is strictly
+  session-scoped. CLAUDE.md documents these limits as invariants.
+
 ## [0.5.0] - 2026-07-06
 
 ### Added
